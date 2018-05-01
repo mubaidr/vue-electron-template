@@ -33,7 +33,7 @@ function startRenderer() {
       hotMiddleware.publish({
         action: 'reload'
       })
-      console.info('\nCompiled renderer script!\n')
+      console.info('\nCompiled renderer script.')
     })
 
     const server = new WebpackDevServer(compiler, {
@@ -53,7 +53,6 @@ function startRenderer() {
   })
 }
 
-/*
 function electronLog(data) {
   let log = ''
   data = data.toString().split(/\r?\n/)
@@ -62,7 +61,6 @@ function electronLog(data) {
   })
   console.info(log)
 }
-*/
 
 function startElectron() {
   electronProcess = spawn(electron, [
@@ -70,14 +68,12 @@ function startElectron() {
     path.join(__dirname, '../dist/electron/main.js')
   ])
 
-  /*
-    electronProcess.stdout.on('data', data => {
-      electronLog(data)
-    })
-    electronProcess.stderr.on('data', data => {
-      electronLog(data)
-    })
-  */
+  electronProcess.stdout.on('data', data => {
+    electronLog(data)
+  })
+  electronProcess.stderr.on('data', data => {
+    electronLog(data)
+  })
 
   electronProcess.on('close', () => {
     if (!manualRestart) process.exit()
@@ -102,7 +98,7 @@ function startMain() {
         }, 5000)
       }
 
-      console.info('\nCompiled main script!\n')
+      console.info('\nCompiled main script.')
       resolve()
     })
 
