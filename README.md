@@ -4,25 +4,24 @@ The boilerplate for making electron applications using vue.js
 
 ## Overview
 
-The aim of this project is to remove the need of manually setting up electron apps using vue. vue-electron takes advantage `webpack-4` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex`, and so much more to provide an easy to use development and building enviroment.
+The aim of this template is to remove the need of manually setting up electron apps using vue. `vue-electron` takes advantage of `webpack-4` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex` and so much more to provide an easy to use development and building enviroment.
 
 ### What does it offer?
 
 * Basic project structure with a **single** `package.json` setup
-* Project scaffolded using [vue-cli](https://github.com/vuejs/vue-cli)
-* Ready to use Vue plugins \([vue-router](https://github.com/vuejs/vue-router), [vuex](https://github.com/vuejs/vuex),[vue-electron](https://github.com/SimulatedGREG/vue-electron)\)
+* Ready to use Vue plugins \([vue-router](https://github.com/vuejs/vue-router), [vuex](https://github.com/vuejs/vuex), [vue-electron](https://github.com/SimulatedGREG/vue-electron)\)
 * Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
+* [Bulma](https://bulma.io) and [Font-awesomse-5](https://fontawesome.com) installed.
 * Ability to easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
-* `DEV` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement
+* `DEV` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement enabled
 * Process restarting when working in main process
-* HTML/CSS/JS pre-processor support with [vue-loader](https://github.com/vuejs/vue-loader/)
+* CSS/JS pre-processor support with [vue-loader](https://github.com/vuejs/vue-loader/)
 * ES6 with [`stage-0`](https://babeljs.io/docs/plugins/preset-stage-0/) by default
 * ESLint configured
-* [Bulma](https://bulma.io) and [Font-awesomse-5](https://fontawesome.com) installed.
 
 ### Getting Started
 
-Clone this repository, install and run using either `dev` or `build` command.
+Clone this repository, install dependencies and run using either `dev` or `build` command.
 
 ```bash
 # Clone this repository
@@ -52,7 +51,7 @@ npm run lint
 
 `src/renderer` contains vue-js application.
 
-`vue-electron` directory contains dev and build scirpts
+`vue-electron` directory contains dev and build scripts
 
 #### Credits
 
