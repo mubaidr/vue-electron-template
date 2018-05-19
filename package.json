@@ -63,11 +63,10 @@
     "electron-rebuild": "^1.7.3",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-config-prettier": "^2.9.0",
     "eslint-import-resolver-webpack": "^0.10.0",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-html": "^4.0.3",
     "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-vue": "^4.5.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "inject-loader": "^4.0.1",
@@ -108,8 +107,7 @@
     "dev": "cross-env NODE_ENV=development node vue-electron/dev-runner.js",
     "lint": "eslint --ext .js,.vue src test",
     "lint:fix": "eslint --ext .js,.vue --fix src test",
-    "pack":
-      "cross-env NODE_ENV=production npm run pack:main && npm run pack:renderer",
+    "pack": "cross-env NODE_ENV=production npm run pack:main && npm run pack:renderer",
     "pack:main":
       "webpack --mode production --progress --config vue-electron/webpack.main.config.js",
     "pack:renderer":

@@ -34,14 +34,6 @@ const rendererConfig = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        use: {
-          loader: 'eslint-loader'
-        }
-      },
-      {
         test: /\.scss$/,
         use: ['vue-style-loader', 'css-loader', 'sass-loader']
       },
@@ -78,7 +70,8 @@ const rendererConfig = {
             extractCSS: process.env.NODE_ENV === 'production',
             loaders: {
               sass: `vue-style-loader!css-loader!sass-loader?indentedSyntax=1`,
-              scss: `vue-style-loader!css-loader!sass-loader`
+              scss: `vue-style-loader!css-loader!sass-loader`,
+              less: `vue-style-loader!css-loader!less-loader`
             }
           }
         }

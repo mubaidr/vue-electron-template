@@ -50,7 +50,7 @@ function createWindow() {
     // show: false,
   })
 
-  mainWindow.setMenu(null)
+  // mainWindow.setMenu(null)
   mainWindow.loadURL(winURL)
 
   /* Show when loaded

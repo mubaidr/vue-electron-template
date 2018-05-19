@@ -12,15 +12,13 @@
           </div>
           <br/>
           <div class="block has-text-centered">
-            <a class="button"
-               href="https://github.com/mubaidr">
+            <a class="button" href="https://github.com/mubaidr">
               <span class="icon">
                 <i class="fab fa-github" />
               </span>
               <span>Follow me</span>
             </a>
-            <a class="button"
-               href="https://github.com/mubaidr">
+            <a class="button" href="https://github.com/mubaidr">
               <span class="icon">
                 <i class="fa fa-star" />
               </span>
