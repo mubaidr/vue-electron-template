@@ -7,9 +7,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const path = require('path')
 
-const {
-  spawn
-} = require('child_process')
+const { spawn } = require('child_process')
 
 const mainConfig = require('./webpack.main.config')
 const rendererConfig = require('./webpack.renderer.config')
@@ -19,7 +17,8 @@ let manualRestart = false
 
 function startRenderer() {
   rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(
-    rendererConfig.entry.renderer)
+    rendererConfig.entry.renderer
+  )
 
   // eslint-disable-next-line
   return new Promise((resolve, reject) => {

@@ -27,5 +27,5 @@ new Vue({
 
 /* Enable webpack hot reloading */
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }

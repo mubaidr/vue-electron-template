@@ -30,15 +30,13 @@
     "mac": {
       "icon": "build/icons/icon.icns"
     },
-    "productName": "image-parsing",
+    "productName": "productName",
     "win": {
       "icon": "build/icons/icon.ico"
     }
   },
   "dependencies": {
     "bulma": "^0.7.1",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
     "vue": "^2.5.16",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
@@ -73,6 +71,8 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "inject-loader": "^4.0.1",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "0.4.0",
     "multispinner": "^0.2.1",
     "node-loader": "^0.6.0",
@@ -98,11 +98,13 @@
     "url": "git+https://github.com/mubaidr/vue-electron-template.git"
   },
   "scripts": {
-    "build":
-      "cross-env NODE_ENV=production node vue-electron/build.js && electron-builder",
-    "build:clean": "cross-env BUILD_TARGET=clean node vue-electron/build.js",
-    "build:dir":
-      "cross-env NODE_ENV=production node vue-electron/build.js && electron-builder --dir",
+    "build": "npm run pack && electron-builder",
+    "build:dir": "npm run pack && electron-builder --dir",
+    "build:linux": "npm run pack && electron-builder --linux",
+    "build:mac": "npm run pack && electron-builder --mac",
+    "build:win": "npm run pack && electron-builder --win",
+    "build:win-app": "npm run pack && electron-builder",
+    "clean": "cross-env BUILD_TARGET=clean node vue-electron/build.js",
     "dev": "cross-env NODE_ENV=development node vue-electron/dev-runner.js",
     "lint": "eslint --ext .js,.vue src test",
     "lint:fix": "eslint --ext .js,.vue --fix src test",

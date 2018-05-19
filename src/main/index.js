@@ -1,11 +1,5 @@
 /* eslint-disable */
-import {
-  app,
-  BrowserWindow,
-  ipcMain,
-  Menu,
-  MenuItem
-} from 'electron'
+import { app, BrowserWindow, ipcMain, Menu, MenuItem } from 'electron'
 /* eslint-enable */
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
@@ -25,7 +19,8 @@ if (process.env.NODE_ENV === 'production') {
     .join(__dirname, '/static')
     .replace(/\\/g, '\\\\') // eslint-disable-line
 } else {
-  require('electron-debug')({ //eslint-disable-line
+  // eslint-disable-next-line
+  require('electron-debug')({
     showDevTools: true
   })
 }
@@ -51,7 +46,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegrationInWorker: true,
       webSecurity: false
-    },
+    }
     // show: false,
   })
 

@@ -1,9 +1,7 @@
 process.env.BABEL_ENV = 'main'
 
 const path = require('path')
-const {
-  dependencies
-} = require('../package.json')
+const { dependencies } = require('../package.json')
 
 /* eslint-disable*/
 const webpack = require('webpack')
@@ -16,7 +14,8 @@ const mainConfig = {
   },
   externals: [...Object.keys(dependencies || {})],
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.(js)$/,
         enforce: 'pre',
         exclude: /node_modules/,
