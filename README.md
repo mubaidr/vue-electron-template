@@ -38,6 +38,9 @@ npm run dev
 # OR
 # Build installer for this app
 npm run build
+# OR
+# Build directory for this app with executeable
+npm run build:dir
 
 # Lint all source files using ESLINT
 npm run lint
