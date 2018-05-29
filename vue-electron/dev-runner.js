@@ -106,11 +106,11 @@ function startMain() {
 }
 
 function init() {
-  console.log('Starting pack scripts...')
+  console.log('\nStarting pack scripts...')
 
   Promise.all([startRenderer(), startMain()])
     .then(() => {
-      console.log('Starting electron...')
+      console.log('\nStarting electron...')
       startElectron()
     })
     .catch((err) => {
