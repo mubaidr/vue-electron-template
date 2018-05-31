@@ -63,6 +63,13 @@ function createWindow() {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
     mainWindow.focus()
+
+    if (
+      process.env.ELECTRON_ENV === 'development' ||
+      process.argv.indexOf('--debug') !== -1
+    ) {
+      mainWindow.webContents.openDevTools()
+    }
   })
 
   mainWindow.on('closed', () => {

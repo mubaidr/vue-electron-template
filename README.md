@@ -38,10 +38,10 @@ npm install
 
 # Run in `DEV` mode
 npm run dev
-# OR
+
 # Build installer for this app
 npm run build
-# OR
+
 # Build directory for this app with executeable
 npm run build:dir
 

@@ -23,27 +23,19 @@
         }
       ]
     },
-    "files": [
-      "dist/electron/**/*"
-    ],
+    "files": ["dist/electron/**/*"],
     "linux": {
       "icon": "build/icons",
-      "publish": [
-        "github"
-      ]
+      "publish": ["github"]
     },
     "mac": {
       "icon": "build/icons/icon.icns",
-      "publish": [
-        "github"
-      ]
+      "publish": ["github"]
     },
     "productName": "productName",
     "win": {
       "icon": "build/icons/icon.ico",
-      "publish": [
-        "github"
-      ]
+      "publish": ["github"]
     }
   },
   "dependencies": {
@@ -118,9 +110,12 @@
     "dev": "cross-env NODE_ENV=development node vue-electron/dev-runner.js",
     "lint": "eslint --ext .js,.vue src test",
     "lint:fix": "eslint --ext .js,.vue --fix src test",
-    "pack": "cross-env NODE_ENV=production npm run pack:main && npm run pack:renderer",
-    "pack:main": "webpack --mode production --hide-modules --config vue-electron/webpack.main.config.js",
-    "pack:renderer": "webpack --mode production --hide-modules --config vue-electron/webpack.renderer.config.js",
+    "pack":
+      "cross-env NODE_ENV=production npm run pack:main && npm run pack:renderer",
+    "pack:main":
+      "webpack --mode production --hide-modules --config vue-electron/webpack.main.config.js",
+    "pack:renderer":
+      "webpack --mode production --hide-modules --config vue-electron/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps && npm rebuild node-sass",
     "rebuild-electron": "./node_modules/.bin/electron-rebuild",
     "release": "build"
