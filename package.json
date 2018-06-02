@@ -84,7 +84,7 @@
     "url-loader": "^1.0.1",
     "vue-devtools": "^4.1.4",
     "vue-html-loader": "^1.2.4",
-    "vue-loader": "^15.2.2",
+    "vue-loader": "^15.2.4",
     "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.10.2",
