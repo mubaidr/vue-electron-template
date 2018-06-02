@@ -8610,9 +8610,9 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-devtools@^3.1.9:
-  version "3.1.9"
-  resolved "https://registry.yarnpkg.com/vue-devtools/-/vue-devtools-3.1.9.tgz#283b458c6853f569a987da0092e7c52e8243a436"
+vue-devtools@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/vue-devtools/-/vue-devtools-4.1.4.tgz#d256093d005408dbc44be9538290971e2b6f6564"
 
 vue-electron@^1.0.6:
   version "1.0.6"
