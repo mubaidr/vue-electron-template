@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const { VueLoaderPlugin } = require('vue-loader')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 /* eslint-enable */
 
 /**
@@ -69,9 +69,9 @@ const rendererConfig = {
           options: {
             extractCSS: process.env.NODE_ENV === 'production',
             loaders: {
-              sass: `vue-style-loader!css-loader!sass-loader?indentedSyntax=1`,
-              scss: `vue-style-loader!css-loader!sass-loader`,
-              less: `vue-style-loader!css-loader!less-loader`
+              sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
+              scss: 'vue-style-loader!css-loader!sass-loader',
+              less: 'vue-style-loader!css-loader!less-loader'
             }
           }
         }
