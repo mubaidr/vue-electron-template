@@ -1,33 +1,14 @@
 {
-  "comments": false,
-  "env": {
-    "test": {
-      "presets": [
-        ["env", {
-          "targets": {
-            "node": 8
-          }
-        }],
-        "stage-0"
-      ],
-      "plugins": ["istanbul"]
-    },
-    "main": {
-      "presets": [
-        ["env", {
-          "targets": {
-            "node": 8
-          }
-        }],
-        "stage-0"
-      ]
-    },
-    "renderer": {
-      "presets": [
-        ["env"],
-        "stage-0"
-      ]
-    }
-  },
-  "plugins": ["transform-runtime"]
+  "plugins": ["transform-object-rest-spread"],
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 6"],
+          "node": 8
+        }
+      }
+    ]
+  ]
 }
