@@ -69,7 +69,7 @@
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^2.0.3",
-    "electron-builder": "^20.16.0",
+    "electron-builder": "^20.18.0",
     "electron-debug": "^2.0.0",
     "electron-rebuild": "^1.7.3",
     "eslint": "^5.0.0",
