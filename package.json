@@ -65,7 +65,7 @@
     "babel-register": "^6.26.0",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
+    "css-loader": "^1.0.0",
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "^2.0.4",
