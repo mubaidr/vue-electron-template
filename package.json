@@ -94,7 +94,7 @@
     "vue-devtools": "^4.1.4",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.2.4",
-    "vue-style-loader": "^4.1.0",
+    "vue-style-loader": "^4.1.1",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8",
