@@ -1,7 +1,6 @@
 process.env.BABEL_ENV = 'renderer'
 
 const path = require('path')
-const { dependencies } = require('../package.json')
 
 /* eslint-disable*/
 const webpack = require('webpack')
@@ -10,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const { dependencies } = require('../package.json')
 /* eslint-enable */
 
 /**
@@ -147,8 +147,7 @@ if (process.env.NODE_ENV === 'production') {
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, '../static'),
-        to: path.join(__dirname, '../dist/electron/static'),
-        ignore: ['.*']
+        to: path.join(__dirname, '../dist/electron/static')
       }
     ])
   )
