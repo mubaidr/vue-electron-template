@@ -1,6 +1,7 @@
 import Vue from 'vue'
 
-import 'bulma/css/bulma.css'
+import 'bulma-fluent/bulma.sass'
+import 'bulma-addons/bulma.sass'
 
 import './assets/style/main.sass'
 import './assets/style/animations.sass'

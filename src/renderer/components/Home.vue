@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header-background">
-      <section class="hero is-info is-medium is-bold">
+      <section class="hero is-primary is-medium is-bold">
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
           <div class="container has-text-centered">
@@ -10,15 +10,19 @@
             </h1>
             <p>The boilerplate for making electron applications using vue.js </p>
           </div>
-          <br/>
+          <br>
           <div class="block has-text-centered">
-            <a class="button" href="https://github.com/mubaidr">
+            <a
+              class="button"
+              href="https://github.com/mubaidr">
               <span class="icon">
                 <i class="fab fa-github" />
               </span>
               <span>Follow me</span>
             </a>
-            <a class="button" href="https://github.com/mubaidr">
+            <a
+              class="button"
+              href="https://github.com/mubaidr">
               <span class="icon">
                 <i class="fa fa-star" />
               </span>
