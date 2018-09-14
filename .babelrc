@@ -4,8 +4,8 @@
       "@babel/env",
       {
         "targets": {
-          "browsers": ["last 2 versions", "safari >= 6"],
-          "node": 8
+          "chrome": "66",
+          "node": 10
         }
       }
     ]
