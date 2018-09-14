@@ -12,9 +12,9 @@ init:
 
 install:
   - ps: Install-Product node 10 x64
-  - yarn
+  - npm
 
 build_script:
-  - yarn run build
+  - npm run build
 
 test: off
