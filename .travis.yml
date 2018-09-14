@@ -28,6 +28,9 @@ before_install:
 before_script:
   - git lfs pull
 
+install:
+  - npm install
+
 script:
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ]; then
