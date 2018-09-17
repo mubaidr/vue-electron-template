@@ -10,7 +10,7 @@ const webpack = require('webpack')
 const mainConfig = {
   mode: process.env.NODE_ENV,
   entry: {
-    main: path.join(__dirname, '../src/main/index.js')
+    main: path.join(__dirname, '../src/main/index.js'),
   },
   externals: [...Object.keys(dependencies || {})],
   module: {
@@ -18,28 +18,28 @@ const mainConfig = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.node$/,
-        use: 'node-loader'
-      }
-    ]
+        use: 'node-loader',
+      },
+    ],
   },
   node: {
     __dirname: process.env.NODE_ENV !== 'production',
-    __filename: process.env.NODE_ENV !== 'production'
+    __filename: process.env.NODE_ENV !== 'production',
   },
   output: {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../dist/electron')
+    path: path.join(__dirname, '../dist/electron'),
   },
   // plugins: [new webpack.NoEmitOnErrorsPlugin()],
   resolve: {
-    extensions: ['.js', '.json', '.node']
+    extensions: ['.js', '.json', '.node'],
   },
-  target: 'electron-main'
+  target: 'electron-main',
 }
 
 module.exports = mainConfig
