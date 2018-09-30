@@ -68,7 +68,7 @@
     "electron-builder": "^20.28.4",
     "electron-debug": "^2.0.0",
     "electron-rebuild": "^1.8.2",
-    "eslint": "^5.6.0",
+    "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-import-resolver-webpack": "^0.10.1",
