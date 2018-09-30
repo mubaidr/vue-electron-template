@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "bulma-addons": "^0.1.12",
-    "bulma-fluent": "^0.3.11",
+    "bulma-fluent": "^0.3.12",
     "vue": "^2.5.17",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",

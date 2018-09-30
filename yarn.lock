@@ -1406,9 +1406,9 @@ bulma-addons@^0.1.12:
   dependencies:
     bulma "^0.7.1"
 
-bulma-fluent@^0.3.11:
-  version "0.3.11"
-  resolved "https://registry.yarnpkg.com/bulma-fluent/-/bulma-fluent-0.3.11.tgz#72834cef73969f70425478ab8707463ee1ec0dbd"
+bulma-fluent@^0.3.12:
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/bulma-fluent/-/bulma-fluent-0.3.12.tgz#a2e8496db35c21529222f919e56b8d93258a55eb"
   dependencies:
     bulma "^0.7.1"
 
