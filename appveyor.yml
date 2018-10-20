@@ -12,8 +12,8 @@ init:
 
 install:
   - ps: Install-Product node 10 x64
-  - npm install
   - npm install --global cross-env
+  - npm install
 
 build_script:
   - npm run build
