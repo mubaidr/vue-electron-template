@@ -26,6 +26,7 @@ before_install:
     fi
 
 before_script:
+  - npm install --global cross-env
   - git lfs pull
 
 script:

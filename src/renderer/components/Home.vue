@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="header-background">
-      <section class="hero is-primary is-medium is-bold">
+      <section class="hero is-info is-medium is-bold">
         <!-- Hero content: will be in the middle -->
         <div class="hero-body">
           <div class="container has-text-centered">

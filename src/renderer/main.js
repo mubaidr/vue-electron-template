@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-import 'bulma-fluent/bulma.sass'
 import 'bulma-addons/bulma.sass'
+import 'bulma-pro/bulma.sass'
 
 import './assets/style/main.sass'
 import './assets/style/animations.sass'
@@ -19,11 +19,11 @@ Vue.use(require('vue-electron'))
 /* eslint-disable no-new */
 new Vue({
   components: {
-    App
+    App,
   },
   router,
   store,
-  template: '<App/>'
+  template: '<App/>',
 }).$mount('#app')
 
 /* Enable webpack hot reloading */
