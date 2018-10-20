@@ -5,7 +5,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/cjua6pdhjp9rqa1o?svg=true)](https://ci.appveyor.com/project/mubaidr/vue-electron-template)
 [![Build Status](https://travis-ci.org/mubaidr/vue-electron-template.svg?branch=master)](https://travis-ci.org/mubaidr/vue-electron-template)
 
-The boilerplate for making electron applications using vue.js
+The boilerplate for electron applications using vue.js
 
 ## Overview
 
@@ -15,8 +15,9 @@ The boilerplate for making electron applications using vue.js
 
 - Ready to use Vue plugins \([vue-router](https://github.com/vuejs/vue-router), [vuex](https://github.com/vuejs/vuex), [vue-electron](https://github.com/SimulatedGREG/vue-electron)\)
 - Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
-- [Bulma-Fluent](https://mubaidr.github.io/bulma-fluent/) and [Font-awesomse-5](https://fontawesome.com) installed.
-- Ability to easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
+- [Bulma-Pro](https://mubaidr.github.io/bulma-pro/), a theme suitable for desktop application based on [Bulma](https://bulma.io/)
+- [Font-awesomse-5](https://fontawesome.com) installed
+- Easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
 - `DEV` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement enabled
 - Process restarting when working in main process
 - CSS/JS pre-processor support with [vue-loader](https://github.com/vuejs/vue-loader/)
