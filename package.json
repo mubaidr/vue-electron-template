@@ -27,20 +27,20 @@
       "dist/electron/**/*"
     ],
     "linux": {
-      "icon": "LogoDesigns/256pxblue.png",
+      "icon": "LogoDesigns/512pxblue.png",
       "publish": [
         "github"
       ]
     },
     "mac": {
-      "icon": "LogoDesigns/256pxblue.png",
+      "icon": "LogoDesigns/512pxblue.png",
       "publish": [
         "github"
       ]
     },
     "productName": "vue-electron-template",
     "win": {
-      "icon": "LogoDesigns/256pxblue.png",
+      "icon": "LogoDesigns/512pxblue.png",
       "publish": [
         "github"
       ]
