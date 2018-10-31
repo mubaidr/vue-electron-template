@@ -27,20 +27,20 @@
       "dist/electron/**/*"
     ],
     "linux": {
-      "icon": "build/icons",
+      "icon": "LogoDesigns/256pxblue.png",
       "publish": [
         "github"
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns",
+      "icon": "LogoDesigns/256pxblue.png",
       "publish": [
         "github"
       ]
     },
-    "productName": "productName",
+    "productName": "vue-electron-template",
     "win": {
-      "icon": "build/icons/icon.ico",
+      "icon": "LogoDesigns/256pxblue.png",
       "publish": [
         "github"
       ]
@@ -104,21 +104,15 @@
   },
   "scripts": {
     "build": "npm run pack && electron-builder",
-    "build:dir": "npm run pack && electron-builder --dir",
-    "build:linux": "npm run pack && electron-builder --linux",
-    "build:mac": "npm run pack && electron-builder --mac",
-    "build:win": "npm run pack && electron-builder --win",
-    "build:win-app": "npm run pack && electron-builder",
+    "build:dir": "npm run pack && electron-builder --dir",    
     "clean": "cross-env BUILD_TARGET=clean node vue-electron/build.js",
     "dev": "cross-env NODE_ENV=development node vue-electron/dev-runner.js",
-    "lint": "eslint --ext .js,.vue src test",
-    "lint:fix": "eslint --ext .js,.vue --fix src test",
+    "lint": "eslint --ext .js,.vue --fix src test",
     "pack": "cross-env NODE_ENV=production npm run pack:main && npm run pack:renderer",
     "pack:main": "webpack --mode production --hide-modules --config vue-electron/webpack.main.config.js",
     "pack:renderer": "webpack --mode production --hide-modules --config vue-electron/webpack.renderer.config.js",
-    "postinstall": "electron-builder install-app-deps && npm rebuild node-sass",
-    "rebuild-electron": "./node_modules/.bin/electron-rebuild",
-    "release": "build"
+    "postinstall": "electron-builder install-app-deps",
+    "rebuild-electron": "./node_modules/.bin/electron-rebuild"
   },
   "version": "0.0.1"
 }
