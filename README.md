@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/jbeguna04/vue-electron-template/master/LogoDesigns/logotype1blue.png"></p>
+<p align="center"><img src="./LogoDesigns/logotype1blue.png"></p>
 
 # Vue-Electron-Template
 
@@ -6,6 +6,8 @@
 [![Build Status](https://travis-ci.org/mubaidr/vue-electron-template.svg?branch=master)](https://travis-ci.org/mubaidr/vue-electron-template)
 
 The boilerplate for electron applications using vue.js
+
+> **Checkout [vue-electron-template](https://github.com/mubaidr/vue-electron-template/tree/rollup) using Rollup.js**
 
 ## Overview
 
@@ -24,6 +26,10 @@ The boilerplate for electron applications using vue.js
 - ES7 with [`env`](https://babeljs.io/docs/en/babel-preset-env/) by default
 - ESLint configured
 - Babel configured
+
+### Screenshot
+
+<p align="center"><img src="./screenshot.png"></p>
 
 ### Getting Started
 

@@ -103,12 +103,12 @@
     "url": "git+https://github.com/mubaidr/vue-electron-template.git"
   },
   "scripts": {
-    "build": "npm run pack && electron-builder",
-    "build:dir": "npm run pack && electron-builder --dir",    
+    "build": "cross-env NODE_ENV=production npm run pack && electron-builder",
+    "build:dir": "npm run pack && electron-builder --dir",
     "clean": "cross-env BUILD_TARGET=clean node vue-electron/build.js",
     "dev": "cross-env NODE_ENV=development node vue-electron/dev-runner.js",
     "lint": "eslint --ext .js,.vue --fix src test",
-    "pack": "cross-env NODE_ENV=production npm run pack:main && npm run pack:renderer",
+    "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "webpack --mode production --hide-modules --config vue-electron/webpack.main.config.js",
     "pack:renderer": "webpack --mode production --hide-modules --config vue-electron/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps",
