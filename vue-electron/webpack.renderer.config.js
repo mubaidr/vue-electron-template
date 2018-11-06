@@ -121,7 +121,6 @@ const rendererConfig = {
     }),
     new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    // new MiniCssExtractPlugin()
   ],
   output: {
     filename: '[name].js',

@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'ImageParsing'
+  name: 'ImageParsing',
 }
 </script>
 

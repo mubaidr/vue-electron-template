@@ -17,7 +17,7 @@
             <span class="icon">
               <i class="fab fa-github" />
             </span>
-            <span>Follow me</span>
+            <span>Github</span>
           </a>
           <a
             class="button is-info"

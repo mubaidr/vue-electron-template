@@ -6,7 +6,6 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 /* eslint-enable */
 
 const path = require('path')
-
 const { spawn } = require('child_process')
 
 const mainConfig = require('./webpack.main.config')
@@ -16,21 +15,20 @@ let electronProcess = null
 let manualRestart = false
 
 function startRenderer() {
-  rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(rendererConfig.entry.renderer)
+  rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(
+    rendererConfig.entry.renderer,
+  )
 
   // eslint-disable-next-line
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const compiler = webpack(rendererConfig)
     const hotMiddleware = webpackHotMiddleware(compiler, {
       log: false,
-      heartbeat: 2500
     })
 
     compiler.hooks.afterEmit.tap('afterEmit', () => {
-      hotMiddleware.publish({
-        action: 'reload'
-      })
-      console.info('\nCompiled renderer script.')
+      console.log('\nCompiled renderer script!')
+      console.log('\nWatching file changes...')
     })
 
     const server = new WebpackDevServer(compiler, {
@@ -43,79 +41,60 @@ function startRenderer() {
         ctx.middleware.waitUntilValid(() => {
           resolve()
         })
-      }
+      },
     })
 
     server.listen(9080)
   })
 }
 
-function electronLog(data) {
-  let log = ''
-  data = data.toString().split(/\r?\n/)
-  data.forEach((line) => {
-    log += `${line}\n`
-  })
-  console.info(log)
-}
+function restartElectron() {
+  console.log('\nStarting electron...')
 
-function startElectron() {
+  if (electronProcess) {
+    process.kill(electronProcess.pid)
+    electronProcess = null
+  }
+
   electronProcess = spawn(electron, [
     '--inspect=5858',
-    path.join(__dirname, '../dist/electron/main.js')
+    path.join(__dirname, '../dist/electron/main.js'),
   ])
 
-  electronProcess.stdout.on('data', (data) => {
-    electronLog(data)
-  })
-  electronProcess.stderr.on('data', (data) => {
-    electronLog(data)
-  })
-
   electronProcess.on('close', () => {
-    if (!manualRestart) process.exit()
+    if (!manualRestart) process.exit(0)
   })
 }
 
 function startMain() {
   return new Promise((resolve, reject) => {
     const compiler = webpack(mainConfig)
-    // console.warn(mainConfig, Object.keys(compiler), Object.keys(compiler.hooks))
 
     compiler.hooks.afterEmit.tap('afterEmit', () => {
-      if (electronProcess && electronProcess.kill) {
-        manualRestart = true
-        process.kill(electronProcess.pid)
-        electronProcess = null
+      console.log('\nCompiled main script!')
+      console.log('\nWatching file changes...')
 
-        startElectron()
+      manualRestart = true
 
-        setTimeout(() => {
-          manualRestart = false
-        }, 5000)
-      }
+      restartElectron()
 
-      console.info('\nCompiled main script.')
+      setTimeout(() => {
+        manualRestart = false
+      }, 250)
+
       resolve()
     })
 
-    compiler.watch({}, (err) => {
+    compiler.watch({}, err => {
       if (err) reject(err)
     })
   })
 }
 
 function init() {
-  console.log('\nStarting pack scripts...')
+  console.log('\nStarting...')
 
-  Promise.all([startRenderer(), startMain()])
-    .then(() => {
-      console.log('\nStarting electron...')
-      startElectron()
-    })
-    .catch((err) => {
-      console.error('\nError: \n', err)
-    })
+  startRenderer().then(startMain)
 }
 
 init()

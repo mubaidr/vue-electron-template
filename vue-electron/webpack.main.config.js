@@ -3,10 +3,6 @@ process.env.BABEL_ENV = 'main'
 const path = require('path')
 const { dependencies } = require('../package.json')
 
-/* eslint-disable*/
-const webpack = require('webpack')
-/* eslint-enable */
-
 const mainConfig = {
   mode: process.env.NODE_ENV,
   entry: {
@@ -35,7 +31,6 @@ const mainConfig = {
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, '../dist/electron'),
   },
-  // plugins: [new webpack.NoEmitOnErrorsPlugin()],
   resolve: {
     extensions: ['.js', '.json', '.node'],
   },
