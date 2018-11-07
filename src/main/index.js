@@ -3,8 +3,6 @@ import { app, BrowserWindow } from 'electron'
 /* eslint-enable */
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 
-console.log('oalalalalal poka pokian sdsd ')
-
 let mainWindow
 let winURL = 'http://localhost:9080'
 

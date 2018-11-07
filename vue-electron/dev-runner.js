@@ -80,7 +80,7 @@ function startMain() {
 
       setTimeout(() => {
         manualRestart = false
-      }, 250)
+      }, 2500)
 
       resolve()
     })
