@@ -3,6 +3,7 @@ const electron = require('electron')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const webpackHotMiddleware = require('webpack-hot-middleware')
+const kill = require('tree-kill')
 /* eslint-enable */
 
 const path = require('path')
@@ -12,7 +13,7 @@ const mainConfig = require('./webpack.main.config')
 const rendererConfig = require('./webpack.renderer.config')
 
 let electronProcess = null
-let manualRestart = false
+let oldElectronProcess = null
 
 function startRenderer() {
   rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(
@@ -51,50 +52,39 @@ function startRenderer() {
 function restartElectron() {
   console.log('\nStarting electron...')
 
-  if (electronProcess) {
-    process.kill(electronProcess.pid)
-    electronProcess = null
-  }
+  oldElectronProcess = electronProcess
 
-  electronProcess = spawn(electron, [
-    '--inspect=5858',
-    path.join(__dirname, '../dist/electron/main.js'),
-  ])
+  electronProcess = spawn(
+    electron,
+    ['--inspect=5858', path.join(__dirname, '../dist/electron/main.js')],
+    {
+      detached: true,
+    },
+  )
 
-  electronProcess.on('close', () => {
-    if (!manualRestart) process.exit(0)
+  electronProcess.stdout.on('data', data => {
+    console.log(data.toString())
+
+    const { pid } = oldElectronProcess || { pid: null }
+    if (pid && process.kill(pid, 0)) {
+      kill(pid)
+      oldElectronProcess = null
+    }
   })
 }
 
 function startMain() {
-  return new Promise((resolve, reject) => {
-    const compiler = webpack(mainConfig)
+  const compiler = webpack(mainConfig)
 
-    compiler.hooks.afterEmit.tap('afterEmit', () => {
-      console.log('\nCompiled main script!')
-      console.log('\nWatching file changes...')
+  compiler.hooks.afterEmit.tap('afterEmit', () => {
+    console.log('\nCompiled main script!')
+    restartElectron()
+    console.log('\nWatching file changes...')
+  })
 
-      manualRestart = true
-
-      restartElectron()
-
-      setTimeout(() => {
-        manualRestart = false
-      }, 2500)
-
-      resolve()
-    })
-
-    compiler.watch({}, err => {
-      if (err) reject(err)
-    })
+  compiler.watch({}, err => {
+    if (err) console.error(err)
   })
 }
 
-function init() {
-  console.log('\nStarting...')
-
-  startRenderer().then(startMain)
-}
-
-init()
+startRenderer().then(startMain)
