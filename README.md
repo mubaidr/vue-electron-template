@@ -7,7 +7,7 @@
 
 The boilerplate for electron applications using vue.js
 
-> **Checkout [vue-electron-template](https://github.com/mubaidr/vue-electron-template/tree/rollup) using Rollup.js**
+> **Checkout (experimental) [vue-electron-template](https://github.com/mubaidr/vue-electron-template/tree/rollup) using Rollup.js**
 
 ## Overview
 
