@@ -58,7 +58,7 @@ function restartElectron() {
     electron,
     ['--inspect=5858', path.join(__dirname, '../dist/electron/main.js')],
     {
-      detached: true,
+      // detached: true,
     },
   )
 
