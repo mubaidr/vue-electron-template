@@ -67,7 +67,6 @@
     "electron": "~3.0.8",
     "electron-builder": "^20.31.2",
     "electron-debug": "^2.0.0",
-    "electron-rebuild": "^1.8.2",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.1.0",
@@ -108,12 +107,11 @@
     "build:dir": "npm run pack && electron-builder --dir",
     "clean": "cross-env BUILD_TARGET=clean node vue-electron/build.js",
     "dev": "cross-env NODE_ENV=development node vue-electron/dev-runner.js",
-    "lint": "eslint --ext .js,.vue --fix src test",
+    "lint": "eslint --ext .js,.vue --fix src",
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "webpack --mode production --hide-modules --config vue-electron/webpack.main.config.js",
     "pack:renderer": "webpack --mode production --hide-modules --config vue-electron/webpack.renderer.config.js",
-    "postinstall": "electron-builder install-app-deps",
-    "rebuild-electron": "./node_modules/.bin/electron-rebuild"
+    "postinstall": "electron-builder install-app-deps"
   },
   "version": "0.0.1"
 }
