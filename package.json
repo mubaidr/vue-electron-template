@@ -51,7 +51,7 @@
     "bulma-pro": "^0.1.4",
     "vue": "^2.5.17",
     "vue-electron": "^1.0.6",
-    "vue-router": "^3.0.1",
+    "vue-router": "^3.0.2",
     "vuex": "^3.0.1"
   },
   "description": "An electron-vue project",
