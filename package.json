@@ -57,7 +57,7 @@
   "description": "An electron-vue project",
   "devDependencies": {
     "@babel/core": "^7.2.0",
-    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-env": "^7.2.0",
     "babel-loader": "^8.0.4",
     "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.2.0",
