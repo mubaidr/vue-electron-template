@@ -65,7 +65,7 @@
     "del": "^3.0.0",
     "devtron": "^1.4.0",
     "electron": "~3.0.12",
-    "electron-builder": "^20.38.3",
+    "electron-builder": "^20.38.4",
     "electron-debug": "^2.0.0",
     "eslint": "^5.11.0",
     "eslint-config-airbnb-base": "^13.1.0",
