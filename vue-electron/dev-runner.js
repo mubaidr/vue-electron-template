@@ -61,7 +61,7 @@ function restartElectron() {
     electron,
     [path.join(__dirname, '..', '/dist/electron/main.js')],
     {
-      detached: true,
+      detached: false,
     },
   )
 

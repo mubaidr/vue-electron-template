@@ -13,7 +13,8 @@
         <div class="block has-text-centered">
           <a
             class="button is-info"
-            href="https://github.com/mubaidr">
+            href="https://github.com/mubaidr"
+          >
             <span class="icon">
               <i class="fab fa-github" />
             </span>
@@ -21,7 +22,8 @@
           </a>
           <a
             class="button is-info"
-            href="https://github.com/mubaidr">
+            href="https://github.com/mubaidr"
+          >
             <span class="icon">
               <i class="fa fa-star" />
             </span>
@@ -31,7 +33,7 @@
       </div>
     </section>
     <div class="section">
-      <system-information/>
+      <system-information />
     </div>
   </div>
 </template>
@@ -46,4 +48,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+</style>

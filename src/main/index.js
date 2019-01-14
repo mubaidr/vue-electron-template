@@ -2,6 +2,7 @@
 import { app, BrowserWindow } from 'electron'
 /* eslint-enable */
 const pkg = require('../../package.json')
+const { productName } = pkg.build
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 
@@ -18,9 +19,12 @@ if (isDev) {
 
 async function installDevTools() {
   try {
-    require('devtron').install() //eslint-disable-line
-    require('vue-devtools').install() //eslint-disable-line
+    // eslint-disable-next-line
+    require('devtron').install()
+    // eslint-disable-next-line
+    require('vue-devtools').install()
   } catch (err) {
+    // eslint-disable-next-line
     console.error(err)
   }
 }
@@ -46,15 +50,14 @@ function createWindow() {
   } else {
     mainWindow.loadFile(`file://${__dirname}/index.html`)
 
-    // eslint-disable-next-line
     global.__static = require('path')
       .join(__dirname, '/static')
-      .replace(/\\/g, '\\\\') // eslint-disable-line
+      .replace(/\\/g, '\\\\')
   }
 
   // Show when loaded
   mainWindow.on('ready-to-show', () => {
-    mainWindow.setTitle(pkg.productName)
+    mainWindow.setTitle(productName)
     mainWindow.show()
     mainWindow.focus()
 
@@ -69,10 +72,10 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-  app.setName(pkg.productName)
+  app.setName(productName)
   createWindow()
 
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     installDevTools()
   }
 })

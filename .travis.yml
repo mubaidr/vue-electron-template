@@ -43,6 +43,7 @@ script:
         -v ~/.cache/electron-builder:/root/.cache/electron-builder \
         electronuserland/builder:wine
     fi
+  - npm run lint
   - npm run build
 
 before_cache:

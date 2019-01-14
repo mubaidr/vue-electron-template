@@ -18,7 +18,8 @@
         </tr>
         <tr
           v-for="lib in Object.keys(versions)"
-          :key="lib">
+          :key="lib"
+        >
           <td>{{ lib }}</td>
           <td>{{ versions[lib] }}</td>
         </tr>
@@ -33,10 +34,10 @@ export default {
     return {
       versions: process.versions,
       platform: require('os').platform(),
-      vue: require('vue/package.json').version
+      vue: require('vue/package.json').version,
     }
   },
-  created() {}
+  created() {},
 }
 </script>
 

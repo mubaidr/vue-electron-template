@@ -3,8 +3,9 @@
     <div class="content-custom">
       <transition
         name="slide-right"
-        mode="out-in">
-        <router-view/>
+        mode="out-in"
+      >
+        <router-view />
       </transition>
     </div>
   </div>

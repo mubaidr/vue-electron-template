@@ -19,10 +19,10 @@ const { dependencies } = require('../package.json')
  * that provide pure *.vue files that need compiling
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals
  */
-const whiteListedModules = []
+const whiteListedModules = ['vue']
 
 const rendererConfig = {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV || 'production',
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
     devClient: path.join(__dirname, './dev-client.js'),
@@ -137,9 +137,9 @@ const rendererConfig = {
   resolve: {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
-      // vue$: 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.common.js',
     },
-    extensions: ['.js', '.vue', '.json', '.css', '.node'],
+    extensions: ['.js', '.vue', '.json', '.css', 'sass', 'scss', '.node'],
   },
   target: 'electron-renderer',
 }
