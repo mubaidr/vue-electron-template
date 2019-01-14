@@ -50,23 +50,13 @@ npm run dev
 
 # Build installer for this app
 npm run build
-
-# Build directory for this app with executeable
-npm run build:dir
-
-# Lint all source files using ESLINT
-npm run lint
 ```
 
 ### Project structure
 
-`src` contains all the source files.
-
 `src/main` contains electron main script.
 
 `src/renderer` contains vue-js application.
-
-`vue-electron` contains dev and build scripts
 
 #### Credits
 
