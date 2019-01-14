@@ -47,7 +47,6 @@
     }
   },
   "dependencies": {
-    "bulma-addons": "^0.1.12",
     "bulma-pro": "^0.1.4",
     "vue": "^2.5.22",
     "vue-electron": "^1.0.6",
@@ -60,7 +59,6 @@
     "@babel/preset-env": "^7.2.3",
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^4.6.0",
-    "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "del": "^3.0.0",
     "devtron": "^1.4.0",
@@ -103,11 +101,11 @@
     "url": "git+https://github.com/mubaidr/vue-electron-template.git"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production npm run pack && electron-builder",
+    "build": "npm run pack && electron-builder",
     "build:dir": "npm run pack && electron-builder --dir",
     "clean": "cross-env BUILD_TARGET=clean node vue-electron/build.js",
-    "dev": "cross-env NODE_ENV=development node vue-electron/dev-runner.js",
-    "lint": "eslint --ext .js,.vue --fix src",
+    "dev": "node vue-electron/dev-runner.js",
+    "lint": "eslint --ext .js,.vue --fix src && prettier --write ./src/**/*{.js,.vue}",
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "webpack --mode production --hide-modules --config vue-electron/webpack.main.config.js",
     "pack:renderer": "webpack --mode production --hide-modules --config vue-electron/webpack.renderer.config.js",

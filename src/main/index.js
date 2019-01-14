@@ -1,43 +1,27 @@
 /* eslint-disable */
 import { app, BrowserWindow } from 'electron'
 /* eslint-enable */
+const pkg = require('../../package.json')
+
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 
+const isDev =
+  process.env.NODE_ENV === 'development' ||
+  process.env.ELECTRON_ENV === 'development' ||
+  process.argv.indexOf('--debug') !== -1
 let mainWindow
-let winURL = 'http://localhost:9080'
 
-if (process.env.NODE_ENV === 'development') {
-  try {
-    // eslint-disable-next-line
-    require('electron-debug')({
-      showDevTools: true,
-    })
-  } catch (err) {
-    console.log(
-      'Failed to install `electron-debug`: Please set `NODE_ENV=production` before build to avoid installing debugging packages. ',
-    )
-  }
-} else {
-  winURL = `file://${__dirname}/index.html`
-
-  /**
-   * Set `__static` path to static files in production
-   * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
-   */
+if (isDev) {
   // eslint-disable-next-line
-  global.__static = require('path')
-    .join(__dirname, '/static')
-    .replace(/\\/g, '\\\\') // eslint-disable-line
+  require('electron-debug')()
 }
 
-function installDevTools() {
+async function installDevTools() {
   try {
     require('devtron').install() //eslint-disable-line
     require('vue-devtools').install() //eslint-disable-line
   } catch (err) {
-    console.log(
-      'Failed to install `devtron` & `vue-devtools`: Please set `NODE_ENV=production` before build to avoid installing debugging packages. ',
-    )
+    console.error(err)
   }
 }
 
@@ -47,30 +31,34 @@ function createWindow() {
    */
   mainWindow = new BrowserWindow({
     useContentSize: true,
-    width: 1000,
-    height: 700,
-    minWidth: 500,
-    minHeight: 350,
-    backgroundColor: '#fff',
+    width: 800,
+    height: 480,
     webPreferences: {
-      nodeIntegrationInWorker: true,
+      nodeIntegration: true,
+      nodeIntegrationInWorker: false,
       webSecurity: false,
     },
     show: false,
   })
 
-  // mainWindow.setMenu(null)
-  mainWindow.loadURL(winURL)
+  if (isDev) {
+    mainWindow.loadURL('http://localhost:9080')
+  } else {
+    mainWindow.loadFile(`file://${__dirname}/index.html`)
+
+    // eslint-disable-next-line
+    global.__static = require('path')
+      .join(__dirname, '/static')
+      .replace(/\\/g, '\\\\') // eslint-disable-line
+  }
 
   // Show when loaded
   mainWindow.on('ready-to-show', () => {
+    mainWindow.setTitle(pkg.productName)
     mainWindow.show()
     mainWindow.focus()
 
-    if (
-      process.env.ELECTRON_ENV === 'development' ||
-      process.argv.indexOf('--debug') !== -1
-    ) {
+    if (isDev) {
       mainWindow.webContents.openDevTools()
     }
   })
@@ -81,6 +69,7 @@ function createWindow() {
 }
 
 app.on('ready', () => {
+  app.setName(pkg.productName)
   createWindow()
 
   if (process.env.NODE_ENV === 'development') {

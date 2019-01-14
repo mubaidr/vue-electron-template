@@ -1,6 +1,5 @@
 import Vue from 'vue'
 
-import 'bulma-addons/bulma.sass'
 import 'bulma-pro/bulma.sass'
 
 import './assets/style/main.sass'
