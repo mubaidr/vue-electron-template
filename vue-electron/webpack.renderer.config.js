@@ -25,7 +25,7 @@ const rendererConfig = {
   mode: process.env.NODE_ENV || 'production',
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
-    devClient: path.join(__dirname, './dev-client.js'),
+    // devClient: path.join(__dirname, './dev-client.js'),
   },
   externals: [
     ...Object.keys(dependencies || {}).filter(

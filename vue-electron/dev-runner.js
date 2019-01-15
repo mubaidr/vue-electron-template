@@ -18,6 +18,10 @@ let electronProcess = null
 let manualRestart = null
 
 async function startRenderer() {
+  rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(
+    rendererConfig.entry.renderer,
+  )
+
   // eslint-disable-next-line
   return new Promise(resolve => {
     const compiler = webpack(rendererConfig)
