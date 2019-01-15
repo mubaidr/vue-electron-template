@@ -1,4 +1,4 @@
-process.env.BABEL_ENV = 'renderer'
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 
 const path = require('path')
 
@@ -22,7 +22,7 @@ const { dependencies } = require('../package.json')
 const whiteListedModules = ['vue']
 
 const rendererConfig = {
-  mode: process.env.NODE_ENV || 'production',
+  mode: process.env.NODE_ENV,
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
     // devClient: path.join(__dirname, './dev-client.js'),

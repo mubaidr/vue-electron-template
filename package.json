@@ -79,6 +79,7 @@
     "less-loader": "^4.1.0",
     "node-loader": "^0.6.0",
     "node-sass": "^4.11.0",
+    "prettier": "^1.15.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "tree-kill": "1.2.1",
@@ -102,8 +103,6 @@
   },
   "scripts": {
     "build": "npm run pack && electron-builder",
-    "build:dir": "npm run pack && electron-builder --dir",
-    "clean": "cross-env BUILD_TARGET=clean node vue-electron/build.js",
     "dev": "node vue-electron/dev-runner.js",
     "lint": "eslint --ext .js,.vue --fix src && prettier --write ./src/**/*{.js,.vue}",
     "pack": "npm run pack:main && npm run pack:renderer",

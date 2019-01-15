@@ -1,4 +1,4 @@
-process.env.BABEL_ENV = 'main'
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 
 const path = require('path')
 const { dependencies } = require('../package.json')

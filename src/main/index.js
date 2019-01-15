@@ -6,10 +6,8 @@ const { productName } = pkg.build
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = true
 
-const isDev =
-  process.env.NODE_ENV === 'development' ||
-  process.env.ELECTRON_ENV === 'development' ||
-  process.argv.indexOf('--debug') !== -1
+const isDev = process.env.NODE_ENV === 'development'
+
 let mainWindow
 
 if (isDev) {
@@ -48,7 +46,7 @@ function createWindow() {
   if (isDev) {
     mainWindow.loadURL('http://localhost:9080')
   } else {
-    mainWindow.loadFile(`file://${__dirname}/index.html`)
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
 
     global.__static = require('path')
       .join(__dirname, '/static')
@@ -61,7 +59,7 @@ function createWindow() {
     mainWindow.show()
     mainWindow.focus()
 
-    if (isDev) {
+    if (isDev || process.argv.indexOf('--debug') !== -1) {
       mainWindow.webContents.openDevTools()
     }
   })

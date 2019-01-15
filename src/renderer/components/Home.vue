@@ -4,37 +4,23 @@
       <!-- Hero content: will be in the middle -->
       <div class="hero-body">
         <div class="container has-text-centered">
-          <h1 class="title is-1">
-            Vue-Electron-Template
-          </h1>
-          <p>The boilerplate for making electron applications using vue.js </p>
+          <h1 class="title is-1">Vue-Electron-Template</h1>
+          <p>The boilerplate for making electron applications using vue.js</p>
         </div>
-        <br>
+        <br />
         <div class="block has-text-centered">
-          <a
-            class="button is-info"
-            href="https://github.com/mubaidr"
-          >
-            <span class="icon">
-              <i class="fab fa-github" />
-            </span>
+          <a class="button is-info" href="https://github.com/mubaidr">
+            <span class="icon"> <i class="fab fa-github" /> </span>
             <span>Github</span>
           </a>
-          <a
-            class="button is-info"
-            href="https://github.com/mubaidr"
-          >
-            <span class="icon">
-              <i class="fa fa-star" />
-            </span>
+          <a class="button is-info" href="https://github.com/mubaidr">
+            <span class="icon"> <i class="fa fa-star" /> </span>
             <span>Star</span>
           </a>
         </div>
       </div>
     </section>
-    <div class="section">
-      <system-information />
-    </div>
+    <div class="section"><system-information /></div>
   </div>
 </template>
 
@@ -48,5 +34,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
