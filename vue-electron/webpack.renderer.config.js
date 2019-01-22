@@ -23,9 +23,21 @@ const whiteListedModules = ['vue']
 
 const rendererConfig = {
   mode: process.env.NODE_ENV,
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
-    // devClient: path.join(__dirname, './dev-client.js'),
+  },
+  output: {
+    pathinfo: false,
+    publicPath: '/',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   externals: [
     ...Object.keys(dependencies || {}).filter(
