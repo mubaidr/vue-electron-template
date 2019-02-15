@@ -23,6 +23,7 @@ The boilerplate for electron applications using vue.js
 - `DEV` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement enabled
 - Process restarting when working in main process
 - CSS/JS pre-processor support with [vue-loader](https://github.com/vuejs/vue-loader/)
+- Remove unused css/styles during build
 - ES7 with [`env`](https://babeljs.io/docs/en/babel-preset-env/) by default
 - ESLint configured
 - Babel configured
