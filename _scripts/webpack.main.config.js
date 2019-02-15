@@ -1,9 +1,11 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 
 const path = require('path')
 const { dependencies } = require('../package.json')
 
-const mainConfig = {
+const isDevMode = process.env.NODE_ENV === 'development'
+
+const config = {
   mode: process.env.NODE_ENV,
   entry: {
     main: path.join(__dirname, '../src/main/index.js'),
@@ -29,8 +31,8 @@ const mainConfig = {
     ],
   },
   node: {
-    __dirname: process.env.NODE_ENV !== 'production',
-    __filename: process.env.NODE_ENV !== 'production',
+    __dirname: isDevMode,
+    __filename: isDevMode,
   },
   output: {
     filename: '[name].js',
@@ -43,4 +45,4 @@ const mainConfig = {
   target: 'electron-main',
 }
 
-module.exports = mainConfig
+module.exports = config

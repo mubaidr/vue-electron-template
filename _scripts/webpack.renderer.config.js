@@ -1,16 +1,22 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 
 const path = require('path')
 
 /* eslint-disable*/
+const fg = require('fast-glob')
 const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { dependencies } = require('../package.json')
 /* eslint-enable */
+
+const isDevMode = process.env.NODE_ENV === 'development'
 
 /**
  * List of node_modules to include in webpack bundle
@@ -21,7 +27,7 @@ const { dependencies } = require('../package.json')
  */
 const whiteListedModules = ['vue']
 
-const rendererConfig = {
+const config = {
   mode: process.env.NODE_ENV,
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
@@ -30,7 +36,6 @@ const rendererConfig = {
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, '../dist'),
     pathinfo: false,
-    publicPath: '/',
     filename: '[name].js',
   },
   externals: [
@@ -42,19 +47,34 @@ const rendererConfig = {
     rules: [
       {
         test: /\.scss$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.sass$/,
-        use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader?indentedSyntax',
+        ],
       },
       {
         test: /\.less$/,
-        use: ['vue-style-loader', 'css-loader', 'less-loader'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader',
+        ],
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader'],
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+        ],
       },
       {
         test: /\.html$/,
@@ -80,7 +100,7 @@ const rendererConfig = {
         use: {
           loader: 'vue-loader',
           options: {
-            extractCSS: process.env.NODE_ENV === 'production',
+            extractCSS: !isDevMode,
             loaders: {
               sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
               scss: 'vue-style-loader!css-loader!sass-loader',
@@ -90,7 +110,7 @@ const rendererConfig = {
         },
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|tiff|bmp|webp|svg)(\?.*)?$/,
         use: {
           loader: 'url-loader',
           query: {
@@ -120,26 +140,19 @@ const rendererConfig = {
     ],
   },
   node: {
-    __dirname: process.env.NODE_ENV !== 'production',
-    __filename: process.env.NODE_ENV !== 'production',
+    __dirname: isDevMode,
+    __filename: isDevMode,
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, '../src/index.ejs'),
-      nodeModules:
-        process.env.NODE_ENV !== 'production'
-          ? path.resolve(__dirname, '../node_modules')
-          : false,
+      nodeModules: isDevMode
+        ? path.resolve(__dirname, '../node_modules')
+        : false,
     }),
     new VueLoaderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
   ],
-  output: {
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../dist'),
-  },
   resolve: {
     alias: {
       '@': path.join(__dirname, '../src/renderer'),
@@ -153,15 +166,30 @@ const rendererConfig = {
 /**
  * Adjust rendererConfig for production settings
  */
-if (process.env.NODE_ENV === 'production') {
-  rendererConfig.plugins.push(
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, '../static'),
-        to: path.join(__dirname, '../dist/static'),
-      },
-    ])
+if (isDevMode) {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
+} else {
+  config.plugins.push(
+    new ScriptExtHtmlWebpackPlugin({
+      async: [/runtime/],
+      defaultAttribute: 'defer',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+    new PurgecssPlugin({
+      paths: fg.sync([`./src/renderer/**/*`], {
+        onlyFiles: true,
+        absolute: true,
+      }),
+    })
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: path.join(__dirname, '../src/data'),
+    //     to: path.join(__dirname, '../dist/data'),
+    //   },
+    // ])
   )
 }
 
-module.exports = rendererConfig
+module.exports = config
