@@ -1,4 +1,4 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'production'
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 const path = require('path')
 
@@ -23,25 +23,19 @@ const whiteListedModules = ['vue']
 
 const rendererConfig = {
   mode: process.env.NODE_ENV,
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
   },
   output: {
+    libraryTarget: 'commonjs2',
+    path: path.join(__dirname, '../dist'),
     pathinfo: false,
     publicPath: '/',
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   },
   externals: [
     ...Object.keys(dependencies || {}).filter(
-      d => !whiteListedModules.includes(d),
+      d => !whiteListedModules.includes(d)
     ),
   ],
   module: {
@@ -144,7 +138,7 @@ const rendererConfig = {
   output: {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../dist/electron'),
+    path: path.join(__dirname, '../dist'),
   },
   resolve: {
     alias: {
@@ -164,9 +158,9 @@ if (process.env.NODE_ENV === 'production') {
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, '../static'),
-        to: path.join(__dirname, '../dist/electron/static'),
+        to: path.join(__dirname, '../dist/static'),
       },
-    ]),
+    ])
   )
 }
 

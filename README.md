@@ -1,4 +1,4 @@
-<p align="center"><img src="./LogoDesigns/logotype1blue.png"></p>
+<p align="center"><img src="./_icons/logotype1blue.png"></p>
 
 # Vue-Electron-Template
 

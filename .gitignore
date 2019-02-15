@@ -1,5 +1,5 @@
 .DS_Store
-dist/electron/*
+dist/*
 dist/web/*
 build/*
 !build/icons
@@ -14,3 +14,4 @@ data/tmp/
 tmp/
 .cache
 dist
+build

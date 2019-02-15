@@ -63,7 +63,7 @@ function restartElectron() {
 
   electronProcess = spawn(
     electron,
-    [path.join(__dirname, '..', '/dist/electron/main.js')],
+    [path.join(__dirname, '..', '/dist/main.js')],
     {
       detached: false,
     },

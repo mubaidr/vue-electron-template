@@ -4,9 +4,10 @@
     "url": "https://github.com/mubaidr/vue-electron-template/issues"
   },
   "build": {
-    "appId": "org.mubaidr.vue-electron-template",
+    "appId": "com.mubaidr.vue-electron-template",
+    "asar": true,
     "directories": {
-      "output": "build"
+      "output": "build/"
     },
     "dmg": {
       "contents": [
@@ -14,41 +15,58 @@
           "path": "/Applications",
           "type": "link",
           "x": 410,
-          "y": 150
+          "y": 230
         },
         {
           "type": "file",
           "x": 130,
-          "y": 150
+          "y": 230
         }
-      ]
+      ],
+      "window": {
+        "height": 380,
+        "width": 540
+      }
     },
     "files": [
-      "dist/electron/**/*"
+      "dist/**/*",
+      "_icons/icon.*"
     ],
     "linux": {
-      "icon": "LogoDesigns/512pxblue.png",
-      "publish": [
-        "github"
+      "icon": "_icons/icon.png",
+      "target": [
+        "deb",
+        "snap",
+        "AppImage"
       ]
     },
     "mac": {
-      "icon": "LogoDesigns/512pxblue.png",
-      "publish": [
-        "github"
-      ]
+      "category": "public.app-category.utilities",
+      "icon": "_icons/icon.icns",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "type": "distribution"
     },
-    "productName": "vue-electron-template",
+    "npmRebuild": true,
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
+    },
+    "productName": "Vue Electron Template",
     "win": {
-      "icon": "LogoDesigns/512pxblue.png",
-      "publish": [
-        "github"
+      "icon": "_icons/icon.ico",
+      "target": [
+        "nsis",
+        "zip",
+        "portable"
       ]
     }
   },
   "dependencies": {
     "bulma-pro": "^0.1.4",
-    "vue": "^2.6.4",
+    "vue": "^2.6.6",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.2",
     "vuex": "^3.1.0"
@@ -60,9 +78,10 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^4.6.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "devtron": "^1.4.0",
-    "electron": "~4.0.4",
+    "electron": "~4.0.5",
     "electron-builder": "^20.38.5",
     "electron-debug": "^2.1.0",
     "eslint": "^5.13.0",
@@ -71,7 +90,7 @@
     "eslint-import-resolver-webpack": "^0.11.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-vue": "^5.1.0",
+    "eslint-plugin-vue": "^5.2.1",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "inject-loader": "^4.0.1",
@@ -88,26 +107,26 @@
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.6.2",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.4",
+    "vue-template-compiler": "^2.6.6",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3"
   },
   "license": "MIT",
-  "main": "./dist/electron/main.js",
+  "main": "./dist/main.js",
   "name": "vue-electron-template",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mubaidr/vue-electron-template.git"
   },
   "scripts": {
-    "build": "npm run pack && electron-builder",
-    "dev": "node vue-electron/dev-runner.js",
+    "build": "cross-env NODE_ENV=production npm run pack && electron-builder",
+    "dev": "node ./_scripts/dev-runner.js",
     "lint": "eslint --ext .js,.vue --fix src && prettier --write ./src/**/*{.js,.vue}",
     "pack": "npm run pack:main && npm run pack:renderer",
-    "pack:main": "webpack --mode production --hide-modules --config vue-electron/webpack.main.config.js",
-    "pack:renderer": "webpack --mode production --hide-modules --config vue-electron/webpack.renderer.config.js",
+    "pack:main": "webpack --hide-modules --config ./_scripts/webpack.main.config.js",
+    "pack:renderer": "webpack --hide-modules --config ./_scripts/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps"
   },
   "version": "0.0.1"
