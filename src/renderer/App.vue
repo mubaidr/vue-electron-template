@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <div class="content-custom">
-      <transition name="slide-right" mode="out-in">
+      <transition
+        name="slide-right"
+        mode="out-in"
+      >
         <router-view />
       </transition>
     </div>

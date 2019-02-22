@@ -16,7 +16,10 @@
           <td>Vue.js</td>
           <td>{{ vue }}</td>
         </tr>
-        <tr v-for="lib in Object.keys(versions)" :key="lib">
+        <tr
+          v-for="lib in Object.keys(versions)"
+          :key="lib"
+        >
           <td>{{ lib }}</td>
           <td>{{ versions[lib] }}</td>
         </tr>

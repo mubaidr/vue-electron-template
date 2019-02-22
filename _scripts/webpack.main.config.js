@@ -4,6 +4,8 @@ const path = require('path')
 const { dependencies } = require('../package.json')
 
 const isDevMode = process.env.NODE_ENV === 'development'
+// eslint-disable-next-line
+const webpack = require('webpack')
 
 const config = {
   mode: process.env.NODE_ENV,
@@ -42,6 +44,11 @@ const config = {
   resolve: {
     extensions: ['.js', '.json', '.node'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      // 'process.env.NODE_ENV': process.env.NODE_ENV,
+    }),
+  ],
   target: 'electron-main',
 }
 

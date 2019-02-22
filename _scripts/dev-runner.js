@@ -1,3 +1,5 @@
+/* eslint no-console:0 */
+
 process.env.NODE_ENV = 'development'
 
 /* eslint-disable*/
@@ -19,7 +21,7 @@ let manualRestart = null
 
 async function startRenderer() {
   rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(
-    rendererConfig.entry.renderer,
+    rendererConfig.entry.renderer
   )
 
   // eslint-disable-next-line
@@ -51,23 +53,27 @@ async function startRenderer() {
   })
 }
 
-function restartElectron() {
+async function killElectron(pid) {
+  return new Promise((resolve, reject) => {
+    if (pid) {
+      kill(pid, err => {
+        if (err) reject(err)
+
+        resolve()
+      })
+    } else {
+      resolve()
+    }
+  })
+}
+
+async function restartElectron() {
   console.log('\nStarting electron...')
 
   const { pid } = electronProcess || {}
-  if (pid) {
-    kill(pid, err => {
-      if (err) console.error(err)
-    })
-  }
+  await killElectron(pid)
 
-  electronProcess = spawn(
-    electron,
-    [path.join(__dirname, '..', '/dist/main.js')],
-    {
-      detached: false,
-    },
-  )
+  electronProcess = spawn(electron, [path.join(__dirname, '../dist/main.js')])
 
   // eslint-disable-next-line
   electronProcess.on('exit', (code, signal) => {
@@ -75,14 +81,19 @@ function restartElectron() {
   })
 }
 
-function startMain() {
+async function startMain() {
   const compiler = webpack(mainConfig)
 
-  compiler.hooks.afterEmit.tap('afterEmit', () => {
+  compiler.hooks.afterEmit.tap('afterEmit', async () => {
     console.log('\nCompiled main script!')
+
     manualRestart = true
-    restartElectron()
-    manualRestart = false
+    await restartElectron()
+
+    setTimeout(() => {
+      manualRestart = false
+    }, 2500)
+
     console.log('\nWatching file changes...')
   })
 

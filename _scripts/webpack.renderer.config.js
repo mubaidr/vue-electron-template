@@ -32,6 +32,12 @@ const config = {
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
   },
+  optimization: {
+    runtimeChunk: true,
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   output: {
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, '../dist'),
@@ -59,14 +65,6 @@ const config = {
           isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader?indentedSyntax',
-        ],
-      },
-      {
-        test: /\.less$/,
-        use: [
-          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'less-loader',
         ],
       },
       {
@@ -152,6 +150,9 @@ const config = {
         : false,
     }),
     new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      // 'process.env.NODE_ENV': process.env.NODE_ENV,
+    }),
   ],
   resolve: {
     alias: {
