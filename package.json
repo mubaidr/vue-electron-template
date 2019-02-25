@@ -78,7 +78,6 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "copy-webpack-plugin": "^5.0.0",
-    "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
     "devtron": "^1.4.0",
     "electron": "~4.0.5",
@@ -114,7 +113,7 @@
     "vue-template-compiler": "^2.6.7",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.0",
+    "webpack-dev-server": "^3.2.1",
     "webpack-hot-middleware": "^2.24.3"
   },
   "license": "MIT",
@@ -125,12 +124,12 @@
     "url": "git+https://github.com/mubaidr/vue-electron-template.git"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production npm run pack && electron-builder",
+    "build": "npm run pack && electron-builder",
     "dev": "node ./_scripts/dev-runner.js",
     "lint": "eslint --ext .js,.vue --fix src && prettier --write ./src/**/*.js",
     "pack": "npm run pack:main && npm run pack:renderer",
-    "pack:main": "webpack --hide-modules --config ./_scripts/webpack.main.config.js",
-    "pack:renderer": "webpack --hide-modules --config ./_scripts/webpack.renderer.config.js",
+    "pack:main": "webpack --mode=production --env.NODE_ENV=production --hide-modules --config ./_scripts/webpack.main.config.js",
+    "pack:renderer": "webpack --mode=production --env.NODE_ENV=production --hide-modules --config ./_scripts/webpack.renderer.config.js",
     "postinstall": "electron-builder install-app-deps"
   },
   "version": "0.0.1"

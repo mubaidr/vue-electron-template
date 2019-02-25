@@ -1,5 +1,3 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'production'
-
 const path = require('path')
 
 /* eslint-disable*/
@@ -13,30 +11,18 @@ const PurgecssPlugin = require('purgecss-webpack-plugin')
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const { dependencies } = require('../package.json')
+const { dependencies, devDependencies, build } = require('../package.json')
 /* eslint-enable */
 
+const externals = Object.keys(dependencies).concat(Object.keys(devDependencies))
 const isDevMode = process.env.NODE_ENV === 'development'
-
-/**
- * List of node_modules to include in webpack bundle
- *
- * Required for specific packages like Vue UI libraries
- * that provide pure *.vue files that need compiling
- * https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals
- */
 const whiteListedModules = ['vue']
 
 const config = {
   mode: process.env.NODE_ENV,
+  devtool: isDevMode ? 'cheap-module-eval-source-map' : false,
   entry: {
     renderer: path.join(__dirname, '../src/renderer/main.js'),
-  },
-  optimization: {
-    runtimeChunk: true,
-    splitChunks: {
-      chunks: 'all',
-    },
   },
   output: {
     libraryTarget: 'commonjs2',
@@ -44,11 +30,12 @@ const config = {
     pathinfo: false,
     filename: '[name].js',
   },
-  externals: [
-    ...Object.keys(dependencies || {}).filter(
-      d => !whiteListedModules.includes(d)
-    ),
-  ],
+  externals: externals.filter(d => !whiteListedModules.includes(d)),
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   module: {
     rules: [
       {
@@ -65,6 +52,14 @@ const config = {
           isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader?indentedSyntax',
+        ],
+      },
+      {
+        test: /\.less$/,
+        use: [
+          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'less-loader',
         ],
       },
       {
@@ -151,12 +146,12 @@ const config = {
     }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-      // 'process.env.NODE_ENV': process.env.NODE_ENV,
+      'process.env.PRODUCT_NAME': JSON.stringify(build.productName),
     }),
   ],
   resolve: {
     alias: {
-      '@': path.join(__dirname, '../src/renderer'),
+      '@': path.join(__dirname, '../src/'),
       vue$: 'vue/dist/vue.common.js',
     },
     extensions: ['.js', '.vue', '.json', '.css', 'sass', 'scss', '.node'],
@@ -168,6 +163,7 @@ const config = {
  * Adjust rendererConfig for production settings
  */
 if (isDevMode) {
+  // any dev only config
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
 } else {
   config.plugins.push(

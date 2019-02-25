@@ -1,18 +1,20 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'production'
-
 const path = require('path')
-const { dependencies } = require('../package.json')
-
-const isDevMode = process.env.NODE_ENV === 'development'
 // eslint-disable-next-line
 const webpack = require('webpack')
 
+const { dependencies, devDependencies, build } = require('../package.json')
+
+const externals = Object.keys(dependencies).concat(Object.keys(devDependencies))
+const isDevMode = process.env.NODE_ENV === 'development'
+const whiteListedModules = []
+
 const config = {
   mode: process.env.NODE_ENV,
+  devtool: isDevMode ? 'cheap-module-eval-source-map' : false,
   entry: {
     main: path.join(__dirname, '../src/main/index.js'),
   },
-  externals: [...Object.keys(dependencies || {})],
+  externals: externals.filter(d => !whiteListedModules.includes(d)),
   module: {
     rules: [
       {
@@ -36,6 +38,11 @@ const config = {
     __dirname: isDevMode,
     __filename: isDevMode,
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.PRODUCT_NAME': JSON.stringify(build.productName),
+    }),
+  ],
   output: {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
@@ -44,11 +51,6 @@ const config = {
   resolve: {
     extensions: ['.js', '.json', '.node'],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      // 'process.env.NODE_ENV': process.env.NODE_ENV,
-    }),
-  ],
   target: 'electron-main',
 }
 

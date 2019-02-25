@@ -11,7 +11,7 @@ export default new Router({
     },
     {
       path: '/home',
-      component: require('@/components/Home').default,
+      component: require('@/renderer/components/Home').default,
     },
     {
       path: '*',

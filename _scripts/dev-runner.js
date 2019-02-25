@@ -39,7 +39,10 @@ async function startRenderer() {
     const server = new WebpackDevServer(compiler, {
       contentBase: path.join(__dirname, '../'),
       hot: true,
-      quiet: true,
+      inline: true,
+      noInfo: true,
+      overlay: true,
+      stats: 'minimal',
       before(app, ctx) {
         app.use(hotMiddleware)
 
