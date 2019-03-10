@@ -80,7 +80,7 @@
     "copy-webpack-plugin": "^5.0.0",
     "css-loader": "^2.1.0",
     "devtron": "^1.4.0",
-    "electron": "~4.0.6",
+    "electron": "~4.0.8",
     "electron-builder": "^20.38.5",
     "fast-glob": "^2.2.6",
     "electron-debug": "^2.1.0",
