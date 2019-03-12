@@ -1,4 +1,5 @@
 <p align="center"><img src="./_icons/logotype1blue.png"></p>
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 # Vue-Electron-Template
 
@@ -62,3 +63,15 @@ npm run build
 All credits to authors of packages and tools used in the project.
 
 \* This template is inspired by [electron-vue](https://github.com/SimulatedGREG/electron-vue)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars3.githubusercontent.com/u/35353768?v=4" width="100px;" alt="Jibbie R. Eguna"/><br /><sub><b>Jibbie R. Eguna</b></sub>](https://github.com/jbeguna04)<br />[🎨](#design-jbeguna04 "Design") |
+| :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
