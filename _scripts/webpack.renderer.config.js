@@ -39,27 +39,23 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s(c|a)ss$/,
         use: [
-          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
-        ],
-      },
-      {
-        test: /\.sass$/,
-        use: [
-          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader?indentedSyntax',
-        ],
-      },
-      {
-        test: /\.less$/,
-        use: [
-          isDevMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'less-loader',
+          {
+            loader: isDevMode
+              ? 'vue-style-loader'
+              : MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              // eslint-disable-next-line
+              implementation: require('sass'),
+            },
+          },
         ],
       },
       {
