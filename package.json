@@ -65,7 +65,7 @@
     }
   },
   "dependencies": {
-    "bulma-pro": "^0.1.6",
+    "bulma-pro": "^0.1.7",
     "vue": "^2.6.10",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.6",
