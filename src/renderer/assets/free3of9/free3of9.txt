@@ -1,0 +1,50 @@
+Font: Free 3 of 9 Barcode
+Created By: Matthew Welch
+E-Mail: matt@squaregear.net
+Web Address: http://www.squaregear.net/fonts/
+
+My fonts are all free.  You can use them for personal or commercial projects,
+and I ask for no money.  I would, however, love to hear from you.  If you use
+my fonts for something please e-mail me letting me know how you used it.  Send
+me a copy if you can or let me know where I can find your work. You are under
+no obligation to do this, I just like to see how my fonts get used.
+
+A license.txt file should have been included with this font, explaining the
+license under which it is made available. You can also read it at:
+
+http://www.squaregear.net/fonts/license.shtml
+
+About the font:
+
+Can you believe there are people who would charge you for a barcode font like
+this?  It took very little time to make this so I thought I'd donate it to the
+world.  It is suitable for scanning even at fairly small point sizes.  I have
+tested printed copies of this font with a couple different scanners and it
+worked perfectly.
+
+This is 3 of 9 (sometimes called "code 39"), a widely used barcode standard
+that includes capital letters, numbers, and several symbols.  This is not the
+barcode for UPC's (universal price codes) found on products at the store.
+However, most kinds of barcode scanners will recognize 3 of 9 just fine.
+
+To create a valid 3 of 9 barcode you have to begin and end it with a special
+character.  Scanners look for this character to know where to start and stop
+reading the barcode.  It is represented in this font with the '*' character.
+So, to create a barcode for the text "ABC123" you have to type out "*ABC123*".
+Note that barcode readers will not include the *'s in the text they return.
+They will just give you the "ABC123".
+
+Two versions of 3 of 9 are included. The font called "Free 3 of 9" is the basic
+3 of 9 standard. It includes letters and these symbols: $ % + - . and /. The
+font called "Free 3 of 9 Extended" covers the extended 3 of 9 standard. It
+includes all the ASCII characters. Most of these extended barcodes are
+included.
+
+Special note to MS Word users: There is a default setting in some versions of
+Word that changes text surrounded by *'s into bold text. This setting must be
+disabled for these fonts to work, otherwise the * characters that are necessary
+for the barcode to scan properly will be lost and the thickness of the bars
+will be altered. The setting might be found in a different place in different
+versions but this is how I disabled it. From the Tools menu open the
+AutoCorrect dialog box. On the AutoFormat tab uncheck the box for "*Bold* and
+_underline_"

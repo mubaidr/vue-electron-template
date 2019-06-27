@@ -1,20 +1,19 @@
 <template>
-  <div id="app">
-    <div class="content-custom">
-      <transition
-        name="slide-right"
-        mode="out-in"
-      >
-        <router-view />
-      </transition>
-    </div>
+  <div id="app" class="container-fluid">
+    <Transition mode="out-in" name="slide-up">
+      <!-- <keep-alive> -->
+      <RouterView />
+      <!-- </keep-alive> -->
+    </Transition>
   </div>
 </template>
 
 <script>
-export default {
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'ImageParsing',
-}
+})
 </script>
 
-<style lang="sass"></style>
+<style lang="scss"></style>

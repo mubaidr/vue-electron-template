@@ -1,51 +1,48 @@
 <template>
   <div>
-    <section class="hero is-black is-medium">
-      <!-- Hero content: will be in the middle -->
+    <section class="hero is-dark is-bold">
       <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title is-1">
-            Vue-Electron-Template
-          </h1>
-          <p>The boilerplate for making electron applications using vue.js</p>
-        </div>
-        <br>
+        <br />
         <div class="block has-text-centered">
-          <a
-            class="button is-info"
-            href="https://github.com/mubaidr"
-          >
-            <span class="icon">
-              <i class="fab fa-github" />
-            </span>
-            <span>Github</span>
-          </a>
-          <a
-            class="button is-info"
-            href="https://github.com/mubaidr"
-          >
-            <span class="icon">
-              <i class="fa fa-star" />
-            </span>
-            <span>Star</span>
-          </a>
+          <figure class="image is-128x128">
+            <img
+              alt="Placeholder image"
+              src="../../../_icons/512icontype11.png"
+            />
+          </figure>
+        </div>
+        <div class="content has-text-centered">
+          <h1 class="title is-4">
+            Image Parsing
+          </h1>
+          <p class="subtitle is-6">
+            Generate answeer sheets and extract results from the scanned answer
+            sheets.
+          </p>
+          <RouterLink class="button is-light" to="generate">
+            <i class="material-icons">view_carousel</i>
+            <span>Generate</span>
+          </RouterLink>
+          <RouterLink class="button is-light" to="process">
+            <i class="material-icons">flash_on</i>
+            <span>Process</span>
+          </RouterLink>
         </div>
       </div>
     </section>
-    <div class="section">
-      <system-information />
-    </div>
   </div>
 </template>
 
 <script>
-import SystemInformation from './Home/SystemInformation'
+import Vue from 'vue'
 
-export default {
+export default Vue.extend({
   name: 'Home',
-
-  components: { SystemInformation },
-}
+})
 </script>
 
-<style></style>
+<style>
+.hero-body {
+  height: 100vh;
+}
+</style>

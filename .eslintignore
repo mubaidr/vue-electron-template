@@ -1,5 +1,2 @@
-test/unit/coverage/**
-test/unit/*.js
-test/e2e/*.js
-**.min.js
-assets/
+node_modules
+_scripts

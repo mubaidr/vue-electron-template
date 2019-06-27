@@ -1,59 +1,27 @@
-/* eslint no-console:0 */
-
 process.env.NODE_ENV = 'development'
 
-/* eslint-disable*/
 const electron = require('electron')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const kill = require('tree-kill')
-/* eslint-enable */
 
 const path = require('path')
 const { spawn } = require('child_process')
 
 const mainConfig = require('./webpack.main.config')
 const rendererConfig = require('./webpack.renderer.config')
+const workersConfig = require('./webpack.workers.config')
 
 let electronProcess = null
 let manualRestart = null
+const remoteDebugging = !!(
+  process.argv[2] && process.argv[2] === '--remote-debug'
+)
 
-async function startRenderer() {
-  rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(
-    rendererConfig.entry.renderer
-  )
-
-  // eslint-disable-next-line
-  return new Promise(resolve => {
-    const compiler = webpack(rendererConfig)
-    const hotMiddleware = webpackHotMiddleware(compiler, {
-      log: false,
-    })
-
-    compiler.hooks.afterEmit.tap('afterEmit', () => {
-      console.log('\nCompiled renderer script!')
-      console.log('\nWatching file changes...')
-    })
-
-    const server = new WebpackDevServer(compiler, {
-      contentBase: path.join(__dirname, '../'),
-      hot: true,
-      inline: true,
-      noInfo: true,
-      overlay: true,
-      stats: 'minimal',
-      before(app, ctx) {
-        app.use(hotMiddleware)
-
-        ctx.middleware.waitUntilValid(() => {
-          resolve()
-        })
-      },
-    })
-
-    server.listen(9080)
-  })
+if (remoteDebugging) {
+  // disable dvtools open in electron
+  process.env.RENDERER_REMOTE_DEBUGGING = true
 }
 
 async function killElectron(pid) {
@@ -76,33 +44,98 @@ async function restartElectron() {
   const { pid } = electronProcess || {}
   await killElectron(pid)
 
-  electronProcess = spawn(electron, [path.join(__dirname, '../dist/main.js')])
+  electronProcess = spawn(electron, [
+    path.join(__dirname, '../dist/main.js'),
+    // '--enable-logging', Enable to show logs from all electron processes
+    remoteDebugging ? '--inspect=9222' : '',
+    remoteDebugging ? '--remote-debugging-port=9223' : '',
+  ])
 
-  // eslint-disable-next-line
   electronProcess.on('exit', (code, signal) => {
     if (!manualRestart) process.exit(0)
   })
 }
 
 async function startMain() {
-  const compiler = webpack(mainConfig)
+  const webpackSetup = webpack([mainConfig, workersConfig])
 
-  compiler.hooks.afterEmit.tap('afterEmit', async () => {
-    console.log('\nCompiled main script!')
+  webpackSetup.compilers.forEach(compiler => {
+    const { name } = compiler
 
-    manualRestart = true
-    await restartElectron()
+    switch (name) {
+      case 'workers':
+        compiler.hooks.afterEmit.tap('afterEmit', async () => {
+          console.log(`\nCompiled ${name} script!`)
+          console.log(`\nWatching file changes for ${name} script...`)
+        })
+        break
+      case 'main':
+      default:
+        compiler.hooks.afterEmit.tap('afterEmit', async () => {
+          console.log(`\nCompiled ${name} script!`)
 
-    setTimeout(() => {
-      manualRestart = false
-    }, 2500)
+          manualRestart = true
+          await restartElectron()
 
-    console.log('\nWatching file changes...')
-  })
+          setTimeout(() => {
+            manualRestart = false
+          }, 2500)
 
-  compiler.watch({}, err => {
-    if (err) console.error(err)
+          console.log(`\nWatching file changes for ${name} script...`)
+        })
+        break
+    }
+
+    compiler.watch(
+      {
+        aggregateTimeout: 500,
+      },
+      err => {
+        if (err) console.error(err)
+      }
+    )
   })
 }
 
-startRenderer().then(startMain)
+async function startRenderer() {
+  rendererConfig.entry.renderer = [
+    path.join(__dirname, 'dev-client'),
+    rendererConfig.entry.renderer,
+  ]
+
+  return new Promise(resolve => {
+    const compiler = webpack(rendererConfig)
+    const { name } = compiler
+    const hotMiddleware = webpackHotMiddleware(compiler, {
+      log: false,
+    })
+
+    compiler.hooks.afterEmit.tap('afterEmit', () => {
+      console.log(`\nCompiled ${name} script!`)
+      console.log(`\nWatching file changes for ${name} script...`)
+    })
+
+    const server = new WebpackDevServer(compiler, {
+      contentBase: path.join(__dirname, '../'),
+      hot: true,
+      noInfo: true,
+      overlay: true,
+      before(app, ctx) {
+        app.use(hotMiddleware)
+
+        ctx.middleware.waitUntilValid(() => {
+          resolve()
+        })
+      },
+    })
+
+    server.listen(9080)
+  })
+}
+
+async function start() {
+  await startRenderer()
+  startMain()
+}
+
+start()
