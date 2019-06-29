@@ -2,30 +2,35 @@
 
 # Vue-Electron-Template
 
-[![Build status](https://ci.appveyor.com/api/projects/status/cjua6pdhjp9rqa1o?svg=true)](https://ci.appveyor.com/project/mubaidr/vue-electron-template)
 [![Build Status](https://travis-ci.org/mubaidr/vue-electron-template.svg?branch=master)](https://travis-ci.org/mubaidr/vue-electron-template)
+[![Build status](https://ci.appveyor.com/api/projects/status/cjua6pdhjp9rqa1o?svg=true)](https://ci.appveyor.com/project/mubaidr/vue-electron-template)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-The boilerplate for electron applications using vue.js
+Template for building electron applications using awesome vue.js
 
 ## Overview
 
-`vue-electron` takes advantage of `webpack-4` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex` and so much more to provide an easy to use development and building enviroment.
+This template takes advantage of `webpack-4` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex` and so much more to provide an easy to use development (with vscode debugging) and build enviroment.
 
-### What does it offer?
+### Features
 
-- Ready to use Vue plugins \([vue-router](https://github.com/vuejs/vue-router), [vuex](https://github.com/vuejs/vuex), [vue-electron](https://github.com/SimulatedGREG/vue-electron)\)
-- Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
 - [Bulma-Pro](https://mubaidr.github.io/bulma-pro/), a theme suitable for desktop application based on [Bulma](https://bulma.io/)
-- [Font-awesomse-5](https://fontawesome.com) installed
+- [vue-router](https://github.com/vuejs/vue-router)
+- [vuex](https://github.com/vuejs/vuex)
+- [vue-electron](https://github.com/SimulatedGREG/vue-electron)
+- [material-design-icons](http://google.github.io/material-design-icons/) installed
+- Some built-in animaitons [animations.scss](src\renderer\assets\style\animations.scss)
+- SCSS/SASS support with [vue-loader](https://github.com/vuejs/vue-loader/) (removes unused css/styles during build)
+- Typescript support configured
+- Worker scripts (for performing CPU-intensive JavaScript operations), to use with nodejs `child_process` module. [Sample Worker File](src\workerSample.ts)
 - Easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
-- `DEV` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement enabled
-- Process restarting when working in main process
-- CSS/JS pre-processor support with [vue-loader](https://github.com/vuejs/vue-loader/)
-- Remove unused css/styles during build
-- ES7 with [`env`](https://babeljs.io/docs/en/babel-preset-env/) by default
-- ESLint configured
+- Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
+- `DEV`, `DEBUG` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement enabled
 - Babel configured
+- ESLint configured
+- ES7 with [`env`](https://babeljs.io/docs/en/babel-preset-env/) by default
+- VSCODE debug config for renderer process debugging
+- Process restarting when working in main process
 
 ### Screenshot
 
@@ -33,7 +38,7 @@ The boilerplate for electron applications using vue.js
 
 ### Getting Started
 
-Clone this repository, install dependencies and run using either `dev` or `build` command.
+Clone this repository, install dependencies and run using either `dev`, `debug` or `build` command.
 
 ```bash
 # Clone this repository
@@ -45,7 +50,10 @@ cd vue-electron
 # Install dependencies
 npm install
 
-# Run in `DEV` mode
+# Run in `debug` mode, to debug app using VSCODE
+npm run debug
+
+# Run in `dev` mode
 npm run dev
 
 # Build installer for this app
@@ -57,6 +65,8 @@ npm run build
 `src/main` contains electron main script.
 
 `src/renderer` contains vue-js application.
+
+`src/workerSample.ts` a sample worker script.
 
 #### Credits
 
@@ -72,6 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 <!-- prettier-ignore -->
 | [<img src="https://avatars3.githubusercontent.com/u/35353768?v=4" width="100px;" alt="Jibbie R. Eguna"/><br /><sub><b>Jibbie R. Eguna</b></sub>](https://github.com/jbeguna04)<br />[🎨](#design-jbeguna04 "Design") |
 | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

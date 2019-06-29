@@ -1,33 +1,37 @@
 module.exports = {
+  // https://eslint.org/docs/user-guide/configuring#using-configuration-files-1
   root: true,
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    parser: 'babel-eslint',
-    sourceType: 'module',
-    ecmaVersion: 8,
-  },
+
+  // https://eslint.org/docs/user-guide/configuring#specifying-environments
   env: {
     browser: true,
     node: true,
   },
-  extends: ['airbnb-base', 'plugin:vue/recommended', 'prettier'],
-  globals: {
-    __static: true,
+
+  // https://eslint.org/docs/user-guide/configuring#specifying-parser
+  parser: 'vue-eslint-parser',
+
+  // https://vuejs.github.io/eslint-plugin-vue/user-guide/#faq
+  parserOptions: {
+    parser: 'babel-eslint',
+    ecmaVersion: 2018,
+    sourceType: 'module',
   },
+
+  // https://eslint.org/docs/user-guide/configuring#extending-configuration-files
+  // order matters: from least important to most important in terms of overriding
+  // Prettier + Vue: https://medium.com/@gogl.alex/how-to-properly-set-up-eslint-with-prettier-for-vue-or-nuxt-in-vscode-e42532099a9c
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/recommended',
+    'prettier',
+    'prettier/vue',
+  ],
+
+  // https://eslint.org/docs/user-guide/configuring#configuring-plugins
   plugins: ['vue'],
+
   rules: {
-    semi: 0,
-    'comma-dangle': 0,
-    'global-require': 0,
-    'import/no-unresolved': 0,
-    'no-param-reassign': 0,
-    'no-shadow': 0,
-    'import/extensions': 0,
-    'import/newline-after-import': 0,
-    'no-multi-assign': 0,
-    'no-underscore-dangle': 0,
-    'linebreak-style': 0,
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-console': 0,
   },
 }

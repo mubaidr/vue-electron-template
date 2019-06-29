@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import About from '../components/About.vue'
+import Help from '../components/Help.vue'
+import Home from '../components/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -11,11 +14,47 @@ export default new Router({
     },
     {
       path: '/home',
-      component: require('@/renderer/components/Home').default,
+      meta: {
+        title: 'Home',
+        icon: 'fa-home',
+      },
+      component: Home,
+    },
+    {
+      path: '/about',
+      meta: {
+        title: 'About',
+        icon: 'fa-info-circle',
+      },
+      component: About,
+    },
+    {
+      path: '/help',
+      meta: {
+        title: 'Help',
+        icon: 'fa-info-circle',
+      },
+      component: Help,
     },
     {
       path: '*',
-      redirect: '/',
+      redirect: '/home',
     },
   ],
 })
+
+// dynamically set application title to current view
+router.afterEach(to => {
+  let title =
+    to.path === '/home'
+      ? process.env.PRODUCT_NAME
+      : `${to.meta.title} - ${process.env.PRODUCT_NAME}`
+
+  if (!title) {
+    title = 'Home'
+  }
+
+  document.title = title
+})
+
+export default router

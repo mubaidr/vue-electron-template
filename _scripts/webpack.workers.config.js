@@ -9,21 +9,25 @@ const {
 
 const externals = Object.keys(dependencies).concat(Object.keys(devDependencies))
 const isDevMode = process.env.NODE_ENV === 'development'
-const whiteListedModules = []
 
 const config = {
-  name: 'main',
+  name: 'workers',
   mode: process.env.NODE_ENV,
   devtool: isDevMode ? 'eval' : false,
   entry: {
-    main: path.join(__dirname, '../src/main/index.js'),
+    workerSample: path.join(__dirname, '../src/workerSample.ts'),
   },
-  externals: externals.filter(d => !whiteListedModules.includes(d)),
+  output: {
+    libraryTarget: 'commonjs2',
+    path: path.join(__dirname, '../dist'),
+    filename: '[name].js',
+  },
+  externals: externals,
   module: {
     rules: [
       {
         test: /\.(j|t)s$/,
-        loader: ['babel-loader'],
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
       {
@@ -37,23 +41,27 @@ const config = {
     __filename: isDevMode,
   },
   plugins: [
+    // new WriteFilePlugin(),
     new webpack.DefinePlugin({
       'process.env.PRODUCT_NAME': JSON.stringify(productName),
     }),
   ],
-  output: {
-    filename: '[name].js',
-    libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../dist'),
-  },
   resolve: {
-    extensions: ['.ts', '.js', '.json'],
     alias: {
       '@': path.join(__dirname, './src/'),
       src: path.join(__dirname, './src/'),
     },
+    extensions: ['.ts', '.js', '.json'],
   },
-  target: 'electron-main',
+  target: 'node',
+}
+
+/**
+ * Adjust rendererConfig for production settings
+ */
+if (isDevMode) {
+  // any dev only config
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
 }
 
 module.exports = config

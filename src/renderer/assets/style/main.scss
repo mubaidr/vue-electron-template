@@ -1,0 +1,52 @@
+html {
+  overflow: auto;
+}
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img {
+  box-shadow: none;
+}
+
+.section {
+  padding: 1.5em;
+}
+
+span + .material-icons {
+  margin-left: 0.25em;
+}
+
+.material-icons + span {
+  margin-left: 0.25em;
+}
+
+.has-pointer {
+  cursor: pointer;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.file-name {
+  padding-top: 0.25em;
+}
+
+/* custom Scroll bars */
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666666;
+}
