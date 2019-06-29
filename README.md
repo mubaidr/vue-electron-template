@@ -6,7 +6,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/cjua6pdhjp9rqa1o?svg=true)](https://ci.appveyor.com/project/mubaidr/vue-electron-template)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
-Template for building electron applications using awesome vue.js
+Template for building desktop applications using [Electronjs](https://electronjs.org) and [Vue.js](https://vuejs.org)
 
 ## Overview
 
@@ -28,7 +28,6 @@ This template takes advantage of `webpack-4` with `vue-loader`, `electron-builde
 - `DEV`, `DEBUG` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement enabled
 - Babel configured
 - ESLint configured
-- ES7 with [`env`](https://babeljs.io/docs/en/babel-preset-env/) by default
 - VSCODE debug config for renderer process debugging
 - Process restarting when working in main process
 
