@@ -1,10 +1,8 @@
 import * as devtron from 'devtron'
 import { app, BrowserWindow, Menu } from 'electron'
 import electronDebug from 'electron-debug'
-import electronSettings from 'electron-settings'
 import * as vueDevtools from 'vue-devtools'
 import { productName } from '../../package.json'
-import { dataPaths } from '../utilities/dataPaths'
 
 // set app name
 app.setName(productName)
@@ -95,11 +93,6 @@ app.on('ready', () => {
 
   if (isDev) {
     installDevTools()
-
-    // reset settings
-    electronSettings.set('open-directory', dataPaths.home)
-    electronSettings.set('open-file', dataPaths.home)
-    electronSettings.set('save-file', dataPaths.home)
   }
 })
 
@@ -155,42 +148,6 @@ const template = [
       { role: 'togglefullscreen' },
       { type: 'separator' },
       { role: 'quit', accelerator: 'Alt+F4' },
-    ],
-  },
-  {
-    label: 'Generate',
-    submenu: [
-      {
-        label: 'Answer Sheets',
-        accelerator: 'CommandOrControl+G',
-        click() {
-          sendMenuEvent({ route: '/generate' })
-        },
-      },
-    ],
-  },
-  {
-    label: 'Process',
-    submenu: [
-      {
-        label: 'Extract Result',
-        accelerator: 'CommandOrControl+P',
-        click() {
-          sendMenuEvent({ route: '/process' })
-        },
-      },
-    ],
-  },
-  {
-    label: 'Compile',
-    submenu: [
-      {
-        label: 'Compile Result',
-        accelerator: 'CommandOrControl+C',
-        click() {
-          sendMenuEvent({ route: '/compile' })
-        },
-      },
     ],
   },
   {

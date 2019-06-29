@@ -4,14 +4,14 @@
       Help
     </h1>
     <h2 class="subtitle is-6">
-      Coming soon...
+      Add help content here
     </h2>
 
     <h2 class="subtitle is-6">
       System Information
     </h2>
     <SystemInformation />
-    <br >
+    <br />
   </div>
 </template>
 

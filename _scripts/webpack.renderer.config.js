@@ -6,7 +6,6 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-// const WriteFilePlugin = require('write-file-webpack-plugin')
 
 const {
   dependencies,
@@ -125,8 +124,9 @@ const config = {
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.common.js',
-      '@': path.join(__dirname, '../src/'),
-      src: path.join(__dirname, '../src/'),
+      '@': path.join(__dirname, './src/'),
+      src: path.join(__dirname, './src/'),
+      icons: path.join(__dirname, '../_icons/'),
     },
     extensions: ['.ts', '.js', '.vue', '.json'],
   },

@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-// const WriteFilePlugin = require('write-file-webpack-plugin')
 
 const {
   dependencies,
@@ -16,10 +15,7 @@ const config = {
   mode: process.env.NODE_ENV,
   devtool: isDevMode ? 'eval' : false,
   entry: {
-    processTaskWorker: path.join(
-      __dirname,
-      '../src/utilities/processTaskWorker.ts'
-    ),
+    workerSample: path.join(__dirname, '../src/workerSample.ts'),
   },
   output: {
     libraryTarget: 'commonjs2',
@@ -52,8 +48,8 @@ const config = {
   ],
   resolve: {
     alias: {
-      '@': path.join(__dirname, '../src/'),
-      src: path.join(__dirname, '../src/'),
+      '@': path.join(__dirname, './src/'),
+      src: path.join(__dirname, './src/'),
     },
     extensions: ['.ts', '.js', '.json'],
   },

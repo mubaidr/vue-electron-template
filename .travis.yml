@@ -3,7 +3,7 @@ matrix:
     - os: osx
       osx_image: xcode9.3
       language: node_js
-      node_js: '10'
+      node_js: '12'
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
@@ -11,7 +11,7 @@ matrix:
     - os: linux
       services: docker
       language: node_js
-      node_js: '10'
+      node_js: '12'
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
@@ -29,7 +29,6 @@ before_install:
       export PATH="/tmp/git-lfs:$PATH"
     fi
 before_script:
-  - npm install --global cross-env
   - git lfs pull
 
 script:

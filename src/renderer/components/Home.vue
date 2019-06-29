@@ -5,27 +5,23 @@
         <br />
         <div class="block has-text-centered">
           <figure class="image is-128x128">
-            <img
-              alt="Placeholder image"
-              src="../../../_icons/512icontype11.png"
-            />
+            <img alt="Placeholder image" src="icons/512icontype11.png" />
           </figure>
         </div>
         <div class="content has-text-centered">
           <h1 class="title is-4">
-            Image Parsing
+            Vue-Electron-Template
           </h1>
           <p class="subtitle is-6">
-            Generate answeer sheets and extract results from the scanned answer
-            sheets.
+            The boilerplate for making electron applications using vue.js.
           </p>
-          <RouterLink class="button is-light" to="generate">
+          <RouterLink class="button is-light" to="about">
             <i class="material-icons">view_carousel</i>
-            <span>Generate</span>
+            <span>About</span>
           </RouterLink>
-          <RouterLink class="button is-light" to="process">
+          <RouterLink class="button is-light" to="help">
             <i class="material-icons">flash_on</i>
-            <span>Process</span>
+            <span>Help</span>
           </RouterLink>
         </div>
       </div>
