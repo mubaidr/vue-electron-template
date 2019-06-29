@@ -26,7 +26,7 @@ const router = new Router({
         title: 'About',
         icon: 'fa-info-circle',
       },
-      component: Help,
+      component: About,
     },
     {
       path: '/help',
@@ -34,7 +34,7 @@ const router = new Router({
         title: 'Help',
         icon: 'fa-info-circle',
       },
-      component: About,
+      component: Help,
     },
     {
       path: '*',
