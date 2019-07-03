@@ -108,6 +108,8 @@ async function startRenderer() {
     const { name } = compiler
     const hotMiddleware = webpackHotMiddleware(compiler, {
       log: false,
+      noInfo: true,
+      quiet: true,
     })
 
     compiler.hooks.afterEmit.tap('afterEmit', () => {
@@ -120,6 +122,7 @@ async function startRenderer() {
       hot: true,
       noInfo: true,
       overlay: true,
+      clientLogLevel: 'error',
       before(app, ctx) {
         app.use(hotMiddleware)
 
