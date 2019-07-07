@@ -20,7 +20,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
     "@types/babel__core": "^7.1.2",
-    "@types/cheerio": "^0.22.11",
+    "@types/cheerio": "^0.22.12",
     "@types/core-js": "^2.5.2",
     "@types/csvtojson": "^1.1.5",
     "@types/electron-debug": "^2.1.0",
