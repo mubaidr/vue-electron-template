@@ -190,24 +190,18 @@ function setMenu() {
       ],
     })
 
-    // Edit menu
-    template[1].submenu.push(
-      // @ts-ignore
-      { type: 'separator' },
-      {
-        label: 'Speech',
-        submenu: [{ role: 'startspeaking' }, { role: 'stopspeaking' }],
-      }
-    )
+    // @ts-ignore
+    template.push({
+      role: 'window',
+    })
 
-    // Window menu
-    template[3].submenu = [
-      { role: 'close' },
-      { role: 'minimize' },
-      { role: 'zoom' },
-      { type: 'separator' },
-      { role: 'front' },
-    ]
+    // @ts-ignore
+    template.push({
+      role: 'help',
+    })
+
+    // @ts-ignore
+    template.push({ role: 'services' })
   }
 
   // @ts-ignore
