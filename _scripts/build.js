@@ -13,8 +13,6 @@ const config = {
   files: [
     '_icons/icon.*',
     '!**/node_modules/**/*',
-    '**/node_modules/sharp/lib/*',
-    '**/node_modules/sharp/build/release/sharp.node',
     'dist/**/*',
     'src/data/**/*',
   ],

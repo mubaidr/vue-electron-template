@@ -5,23 +5,22 @@
       <article class="media">
         <div class="media-content">
           <div class="content">
-            <p>
-              <h2 class="subtitle is-6">Developed By: </h2>
+            <div>
+              <h2 class="subtitle is-6">Developed By:</h2>
               <strong>Muhammad Ubaid Raza</strong>
-              <br/>
-              <a
-                href="//github.com/mubaidr"
-                target="_blank"
-              >mubaidr@gmail.com</a>
-            </p>
+              <br />
+              <a href="//github.com/mubaidr" target="_blank"
+                >mubaidr@gmail.com</a
+              >
+            </div>
           </div>
         </div>
       </article>
     </div>
 
     <h2 class="subtitle is-4">System Information</h2>
-    <SystemInformation/>
-    <br>
+    <SystemInformation />
+    <br />
   </div>
 </template>
 

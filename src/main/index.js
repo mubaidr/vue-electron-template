@@ -1,7 +1,4 @@
-import * as devtron from 'devtron'
 import { app, BrowserWindow, Menu } from 'electron'
-import electronDebug from 'electron-debug'
-import * as vueDevtools from 'vue-devtools'
 import { productName } from '../../package.json'
 
 // set app name
@@ -29,15 +26,17 @@ if (!isDev) {
     process.exit(0)
   }
 } else {
-  electronDebug({
+  require('electron-debug')({
     showDevTools: !(process.env.RENDERER_REMOTE_DEBUGGING === 'true'),
   })
 }
 
 async function installDevTools() {
   try {
-    devtron.install()
-    vueDevtools.install()
+    /* eslint-disable */
+    require('devtron').install()
+    require('vue-devtools').install()
+    /* eslint-enable */
   } catch (err) {
     console.log(err)
   }
@@ -94,6 +93,8 @@ app.on('ready', () => {
   if (isDev) {
     installDevTools()
   }
+
+  // mainWindow.webContents.openDevTools()
 })
 
 app.on('window-all-closed', () => {
