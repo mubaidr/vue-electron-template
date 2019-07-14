@@ -38,7 +38,7 @@
     "@types/webpack": "^4.4.34",
     "@types/webpack-dev-server": "^3.1.6",
     "@types/webpack-hot-middleware": "^2.16.5",
-    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@typescript-eslint/parser": "^1.11.0",
     "acorn": "^6.2.0",
     "babel-eslint": "^10.0.2",
