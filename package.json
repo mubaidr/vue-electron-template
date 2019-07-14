@@ -32,7 +32,7 @@
     "@types/node-sass": "^4.11.0",
     "@types/prettier": "^1.16.4",
     "@types/sass": "^1.16.0",
-    "@types/script-ext-html-webpack-plugin": "^2.1.0",
+    "@types/script-ext-html-webpack-plugin": "^2.1.1",
     "@types/sharp": "^0.22.2",
     "@types/uuid": "^3.4.5",
     "@types/webpack": "^4.4.34",
