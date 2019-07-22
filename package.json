@@ -35,7 +35,7 @@
     "@types/script-ext-html-webpack-plugin": "^2.1.1",
     "@types/sharp": "^0.22.2",
     "@types/uuid": "^3.4.5",
-    "@types/webpack": "^4.4.35",
+    "@types/webpack": "^4.32.0",
     "@types/webpack-dev-server": "^3.1.7",
     "@types/webpack-hot-middleware": "^2.16.5",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
