@@ -40,7 +40,7 @@
     "@types/webpack-hot-middleware": "^2.16.5",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
-    "acorn": "^6.2.1",
+    "acorn": "^6.3.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
