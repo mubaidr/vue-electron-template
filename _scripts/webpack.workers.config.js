@@ -48,8 +48,8 @@ const config = {
   ],
   resolve: {
     alias: {
-      '@': path.join(__dirname, './src/'),
-      src: path.join(__dirname, './src/'),
+      '@': path.join(__dirname, '../src/'),
+      src: path.join(__dirname, '../src/'),
     },
     extensions: ['.ts', '.js', '.json'],
   },
