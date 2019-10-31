@@ -10,7 +10,7 @@ Template for building desktop applications using [Electronjs](https://electronjs
 
 ## Overview
 
-This template takes advantage of `webpack-4` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex` and so much more to provide an easy to use development (with vscode debugging) and build enviroment.
+This template takes advantage of `webpack-4` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex` and so much more to provide an easy to use development (with vscode debugging) enviroment with hot module replacement.
 
 ### Features
 
@@ -20,16 +20,17 @@ This template takes advantage of `webpack-4` with `vue-loader`, `electron-builde
 - [vue-electron](https://github.com/SimulatedGREG/vue-electron)
 - [material-design-icons](http://google.github.io/material-design-icons/) installed
 - Some built-in animaitons [animations.scss](src\renderer\assets\style\animations.scss)
-- SCSS/SASS support with [vue-loader](https://github.com/vuejs/vue-loader/) (removes unused css/styles during build)
-- Typescript support configured
-- Worker scripts (for performing CPU-intensive JavaScript operations), to use with nodejs `child_process` module. [Sample Worker File](src\workerSample.ts)
+- `SCSS`/`SASS` support with [vue-loader](https://github.com/vuejs/vue-loader/) (removes unused css/styles during build)
+- `Typescript` support
+- Worker scripts (to perform CPU-intensive operations), to use with nodejs `child_process` module. [Sample Worker File](src\utilities\workerSample.ts)
 - Easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
 - Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
-- `DEV`, `DEBUG` & `BUILD` NPM scripts using [webpack-4](https://github.com/webpack/webpack) and [vue-loader](https://github.com/vuejs/vue-loader) with Hot Module Replacement enabled
-- Babel configured
-- ESLint configured
-- VSCODE debug config for renderer process debugging
-- Process restarting when working in main process
+- `DEV`, `DEBUG` & `BUILD` NPM scripts
+- `--debug` paramter to enable dev tools in build executeable
+- `Babel` configured
+- `ESLint` configured
+- `vscode` debug config for renderer process debugging
+- Process restarting when working in main process & hot module replacement for renderer.
 
 ### Screenshot
 
@@ -65,7 +66,7 @@ npm run build
 
 `src/renderer` contains vue-js application.
 
-`src/workerSample.ts` a sample worker script.
+`src/utilities/workerSample.ts` a sample worker script.
 
 #### Credits
 
