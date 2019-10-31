@@ -15,7 +15,7 @@ const config = {
   mode: process.env.NODE_ENV,
   devtool: isDevMode ? 'eval' : false,
   entry: {
-    workerSample: path.join(__dirname, '../src/workerSample.ts'),
+    workerSample: path.join(__dirname, '../src/utilities/workerSample.ts'),
   },
   output: {
     libraryTarget: 'commonjs2',

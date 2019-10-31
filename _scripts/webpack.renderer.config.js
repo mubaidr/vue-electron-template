@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const {
   // dependencies,
@@ -135,20 +136,14 @@ if (isDevMode) {
     new ScriptExtHtmlWebpackPlugin({
       async: [/runtime/],
       defaultAttribute: 'defer',
-    })
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.join(__dirname, '../src/data'),
-    //     to: path.join(__dirname, '../dist/data'),
-    //   },
-    // ])
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../static'),
+        to: path.join(__dirname, '../dist/static'),
+      },
+    ])
   )
-
-  // config.optimization = {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //   },
-  // }
 }
 
 module.exports = config

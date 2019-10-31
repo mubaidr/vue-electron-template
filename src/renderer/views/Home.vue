@@ -15,12 +15,12 @@
           <p class="subtitle is-6">
             The boilerplate for making electron applications using vue.js.
           </p>
-          <RouterLink class="button is-light" to="about">
-            <i class="material-icons">view_carousel</i>
+          <RouterLink class="button is-info" to="about">
+            <i class="material-icons">info</i>
             <span>About</span>
           </RouterLink>
-          <RouterLink class="button is-light" to="help">
-            <i class="material-icons">flash_on</i>
+          <RouterLink class="button is-info" to="help">
+            <i class="material-icons">help</i>
             <span>Help</span>
           </RouterLink>
         </div>

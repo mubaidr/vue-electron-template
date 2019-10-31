@@ -22,7 +22,7 @@ Vue.use(Toasted, {
 
 Vue.config.devtools = isDev
 Vue.config.performance = isDev
-Vue.config.productionTip = false
+Vue.config.productionTip = isDev
 
 // tslint:disable-next-line: no-unused-expression
 new Vue({

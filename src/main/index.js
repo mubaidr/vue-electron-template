@@ -9,6 +9,7 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
 
 const gotTheLock = app.requestSingleInstanceLock()
 const isDev = process.env.NODE_ENV === 'development'
+const isDebug = process.argv.includes('--debug')
 let mainWindow
 
 // only allow single instance of application
@@ -94,7 +95,9 @@ app.on('ready', () => {
     installDevTools()
   }
 
-  // mainWindow.webContents.openDevTools()
+  if (isDebug) {
+    mainWindow.webContents.openDevTools()
+  }
 })
 
 app.on('window-all-closed', () => {

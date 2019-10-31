@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SystemInformation from './About/SystemInformation.vue'
+import SystemInformation from '../components/SystemInformation.vue'
 import Vue from 'vue'
 
 export default Vue.extend({
