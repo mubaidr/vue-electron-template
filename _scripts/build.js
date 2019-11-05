@@ -1,19 +1,30 @@
+const os = require('os')
 const builder = require('electron-builder')
 
 const Platform = builder.Platform
 const { name, productName } = require('../package.json')
 
+let targets
+var platform = os.platform()
+
+if (platform == 'darwin') {
+  targets = Platform.MAC.createTarget()
+} else if (platform == 'win32') {
+  targets = Platform.WINDOWS.createTarget()
+} else if (platform == 'linux') {
+  targets = Platform.LINUX.createTarget()
+}
+
 const config = {
   appId: `com.mubaidr.${name}`,
   copyright: 'Copyright ©2019 mubaidr@gmail.com',
+  // asar: false,
+  // compression: 'store',
   productName,
   directories: {
     output: './build/',
   },
-  files: [
-    '_icons/icon.*',
-    './dist/**/*',
-  ],
+  files: ['_icons/icon.*', './dist/**/*'],
   dmg: {
     contents: [
       {
@@ -55,7 +66,7 @@ const config = {
 
 builder
   .build({
-    targets: Platform.WINDOWS.createTarget(),
+    targets,
     config,
   })
   .then(m => {

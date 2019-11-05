@@ -71,7 +71,6 @@ function createWindow() {
   } else {
     mainWindow.loadFile(`${__dirname}/index.html`)
 
-    // @ts-ignore
     global.__static = require('path')
       .join(__dirname, '/static')
       .replace(/\\/g, '\\\\')
@@ -194,21 +193,17 @@ function setMenu() {
       ],
     })
 
-    // @ts-ignore
     template.push({
       role: 'window',
     })
 
-    // @ts-ignore
     template.push({
       role: 'help',
     })
 
-    // @ts-ignore
     template.push({ role: 'services' })
   }
 
-  // @ts-ignore
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
 }

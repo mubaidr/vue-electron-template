@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const {
   dependencies,
@@ -54,6 +55,21 @@ const config = {
     },
   },
   target: 'electron-main',
+}
+
+if (!isDevMode) {
+  config.plugins.push(
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../src/data'),
+        to: path.join(__dirname, '../dist/data'),
+      },
+      {
+        from: path.join(__dirname, '../static'),
+        to: path.join(__dirname, '../dist/static'),
+      },
+    ])
+  )
 }
 
 module.exports = config
