@@ -8,13 +8,11 @@ const config = {
   copyright: 'Copyright ©2019 mubaidr@gmail.com',
   productName,
   directories: {
-    output: 'build/',
+    output: './build/',
   },
   files: [
     '_icons/icon.*',
-    '!**/node_modules/**/*',
-    'dist/**/*',
-    'src/data/**/*',
+    './dist/**/*',
   ],
   dmg: {
     contents: [
