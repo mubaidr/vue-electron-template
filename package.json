@@ -58,7 +58,7 @@
     "webpack-hot-middleware": "^2.25.0"
   },
   "license": "MIT",
-  "main": "dist/main.js",
+  "main": "./dist/main.js",
   "name": "vue-electron-template",
   "private": true,
   "productName": "Vue Electron Template",
