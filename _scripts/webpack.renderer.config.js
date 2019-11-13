@@ -1,18 +1,17 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const {
   dependencies,
-  // devDependencies,
+  devDependencies,
   productName,
 } = require('../package.json')
 
-const externals = Object.keys(dependencies)
+const externals = Object.keys(dependencies).concat(Object.keys(devDependencies))
 const isDevMode = process.env.NODE_ENV === 'development'
 const whiteListedModules = ['vue']
 
@@ -154,10 +153,6 @@ if (isDevMode) {
   config.plugins.push(new webpack.HotModuleReplacementPlugin())
 } else {
   config.plugins.push(
-    new ScriptExtHtmlWebpackPlugin({
-      async: [/runtime/],
-      defaultAttribute: 'defer',
-    }),
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, '../static'),
