@@ -43,7 +43,7 @@
     "prettier": "^1.19.1",
     "sass": "^1.23.7",
     "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0",
+    "style-loader": "^1.0.1",
     "tree-kill": "1.2.1",
     "typescript": "^3.7.2",
     "url-loader": "^2.3.0",
