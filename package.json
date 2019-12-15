@@ -32,7 +32,7 @@
     "electron-rebuild": "^1.8.8",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^6.0.1",
     "fast-glob": "^3.1.1",
     "file-loader": "^5.0.2",
