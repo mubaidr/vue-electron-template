@@ -5,15 +5,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const {
-  dependencies,
-  devDependencies,
-  productName,
-} = require('../package.json')
+const { productName } = require('../package.json')
 
-const externals = Object.keys(dependencies).concat(Object.keys(devDependencies))
 const isDevMode = process.env.NODE_ENV === 'development'
-const whiteListedModules = ['vue']
 
 const config = {
   name: 'web',
@@ -26,7 +20,6 @@ const config = {
     path: path.join(__dirname, '../dist/web'),
     filename: '[name].js',
   },
-  externals: externals.filter(d => !whiteListedModules.includes(d)),
   module: {
     rules: [
       {
@@ -35,12 +28,18 @@ const config = {
         exclude: /node_modules/,
       },
       {
-        test: /\.node$/,
-        use: 'node-loader',
-      },
-      {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        use: {
+          loader: 'vue-loader',
+          options: {
+            extractCSS: true,
+            loaders: {
+              sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
+              scss: 'vue-style-loader!css-loader!sass-loader',
+              less: 'vue-style-loader!css-loader!less-loader',
+            },
+          },
+        },
       },
       {
         test: /\.s(c|a)ss$/,
@@ -74,6 +73,10 @@ const config = {
           },
           'css-loader',
         ],
+      },
+      {
+        test: /\.html$/,
+        use: 'vue-html-loader',
       },
       {
         test: /\.(png|jpe?g|gif|tif?f|bmp|webp|svg)(\?.*)?$/,
@@ -122,12 +125,12 @@ const config = {
   ],
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.common.js',
-      '@': path.join(__dirname, '../src/'),
+      '@': path.join(__dirname, '../src/renderer'),
+      vue$: 'vue/dist/vue.esm.js',
       src: path.join(__dirname, '../src/'),
       icons: path.join(__dirname, '../_icons/'),
     },
-    extensions: ['.ts', '.js', '.vue', '.json'],
+    extensions: ['.ts', '.js', '.vue', '.json', '.css'],
   },
   target: 'web',
 }

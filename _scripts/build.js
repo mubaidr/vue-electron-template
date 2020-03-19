@@ -24,7 +24,7 @@ const config = {
   directories: {
     output: './build/',
   },
-  files: ['_icons/icon.*', './dist/**/*'],
+  files: ['_icons/icon.*', './dist/**/*', '!./dist/web/**/*'],
   dmg: {
     contents: [
       {
