@@ -105,6 +105,7 @@ const config = {
   node: {
     __dirname: isDevMode,
     __filename: isDevMode,
+    fs: 'empty',
   },
   plugins: [
     // new WriteFilePlugin(),
