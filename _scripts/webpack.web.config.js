@@ -16,15 +16,14 @@ const isDevMode = process.env.NODE_ENV === 'development'
 const whiteListedModules = ['vue']
 
 const config = {
-  name: 'renderer',
+  name: 'web',
   mode: process.env.NODE_ENV,
   devtool: isDevMode ? '#cheap-module-eval-source-map' : false,
   entry: {
-    renderer: path.join(__dirname, '../src/renderer/main.js'),
+    web: path.join(__dirname, '../src/renderer/main.js'),
   },
   output: {
-    libraryTarget: 'commonjs2',
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../dist/web'),
     filename: '[name].js',
   },
   externals: externals.filter(d => !whiteListedModules.includes(d)),
@@ -110,9 +109,7 @@ const config = {
       excludeChunks: ['processTaskWorker'],
       filename: 'index.html',
       template: path.resolve(__dirname, '../src/index.ejs'),
-      nodeModules: isDevMode
-        ? path.resolve(__dirname, '../node_modules')
-        : false,
+      nodeModules: false,
     }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
@@ -132,11 +129,11 @@ const config = {
     },
     extensions: ['.ts', '.js', '.vue', '.json'],
   },
-  target: 'electron-renderer',
+  target: 'web',
 }
 
 /**
- * Adjust rendererConfig for production settings
+ * Adjust web for production settings
  */
 if (isDevMode) {
   // any dev only config

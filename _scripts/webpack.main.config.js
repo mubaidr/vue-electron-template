@@ -15,7 +15,7 @@ const whiteListedModules = []
 const config = {
   name: 'main',
   mode: process.env.NODE_ENV,
-  devtool: isDevMode ? 'eval' : false,
+  devtool: isDevMode ? '#cheap-module-eval-source-map' : false,
   entry: {
     main: path.join(__dirname, '../src/main/index.js'),
   },
@@ -75,7 +75,10 @@ if (isDevMode) {
         to: path.join(__dirname, '../dist/static'),
         ignore: ['.*'],
       },
-    ])
+    ]),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+    })
   )
 }
 
