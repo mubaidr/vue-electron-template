@@ -26,11 +26,11 @@ This template takes advantage of `webpack-4` with `vue-loader`, `electron-builde
 - Easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
 - Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
 - `DEV`, `DEBUG` & `BUILD` NPM scripts
-- `--debug` paramter to enable dev tools in build executeable
 - `Babel` configured
 - `ESLint` configured
 - `vscode` debug config for renderer process debugging
 - Process restarting when working in main process & hot module replacement for renderer.
+- `--debug` paramter to enable dev tools in production build executeable. 
 
 ### Screenshot
 
