@@ -29,8 +29,9 @@ This template takes advantage of `webpack-4` with `vue-loader`, `electron-builde
 - `Babel` configured
 - `ESLint` configured
 - `vscode` debug config for renderer process debugging
-- Process restarting when working in main process & hot module replacement for renderer.
-- `--debug` paramter to enable dev tools in production build executeable. 
+- Process restarting when working in main process & hot module replacement for renderer
+- Generates web/browser build in the `dist/web` directory too
+- `--debug` paramter to enable dev tools in production build executeable
 
 ### Screenshot
 
