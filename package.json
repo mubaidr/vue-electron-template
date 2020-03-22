@@ -22,7 +22,7 @@
     "@typescript-eslint/parser": "^2.24.0",
     "acorn": "^7.1.1",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "devtron": "^1.4.0",
