@@ -1,5 +1,7 @@
 process.env.NODE_ENV = 'development'
+process.env.ELECTRON_ENABLE_LOGGING = true
 
+const chalk = require('chalk')
 const electron = require('electron')
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
@@ -19,13 +21,12 @@ const remoteDebugging = process.argv.includes('--remote-debug')
 if (remoteDebugging) {
   // disable dvtools open in electron
   process.env.RENDERER_REMOTE_DEBUGGING = true
-  process.env.ELECTRON_ENABLE_LOGGING = true
 }
 
 async function killElectron(pid) {
   return new Promise((resolve, reject) => {
     if (pid) {
-      kill(pid, err => {
+      kill(pid, (err) => {
         if (err) reject(err)
 
         resolve()
@@ -37,7 +38,7 @@ async function killElectron(pid) {
 }
 
 async function restartElectron() {
-  console.log('\nStarting electron...')
+  console.log(chalk.gray('\nStarting electron...'))
 
   const { pid } = electronProcess || {}
   await killElectron(pid)
@@ -49,12 +50,12 @@ async function restartElectron() {
     remoteDebugging ? '--remote-debugging-port=9223' : '',
   ])
 
-  electronProcess.stdout.on('data', data => {
-    console.log(data.toString())
+  electronProcess.stdout.on('data', (data) => {
+    console.log(chalk.white(data.toString()))
   })
 
-  electronProcess.stderr.on('data', data => {
-    console.error(data.toString())
+  electronProcess.stderr.on('data', (data) => {
+    console.error(chalk.red(data.toString()))
   })
 
   electronProcess.on('exit', (code, signal) => {
@@ -65,20 +66,22 @@ async function restartElectron() {
 function startMain() {
   const webpackSetup = webpack([mainConfig, workersConfig])
 
-  webpackSetup.compilers.forEach(compiler => {
+  webpackSetup.compilers.forEach((compiler) => {
     const { name } = compiler
 
     switch (name) {
       case 'workers':
         compiler.hooks.afterEmit.tap('afterEmit', async () => {
-          console.log(`\nCompiled ${name} script!`)
-          console.log(`\nWatching file changes for ${name} script...`)
+          console.log(chalk.gray(`\nCompiled ${name} script!`))
+          console.log(
+            chalk.gray(`\nWatching file changes for ${name} script...`)
+          )
         })
         break
       case 'main':
       default:
         compiler.hooks.afterEmit.tap('afterEmit', async () => {
-          console.log(`\nCompiled ${name} script!`)
+          console.log(chalk.gray(`\nCompiled ${name} script!`))
 
           manualRestart = true
           await restartElectron()
@@ -87,18 +90,22 @@ function startMain() {
             manualRestart = false
           }, 2500)
 
-          console.log(`\nWatching file changes for ${name} script...`)
+          console.log(
+            chalk.gray(`\nWatching file changes for ${name} script...`)
+          )
         })
         break
     }
   })
 
-  webpackSetup.watch({
-    aggregateTimeout: 500,
-  },
-    err => {
-      if (err) console.error(err)
-    })
+  webpackSetup.watch(
+    {
+      aggregateTimeout: 500,
+    },
+    (err) => {
+      if (err) console.error(chalk.red(err))
+    }
+  )
 }
 
 function startRenderer(callback) {
@@ -106,8 +113,8 @@ function startRenderer(callback) {
   const { name } = compiler
 
   compiler.hooks.afterEmit.tap('afterEmit', () => {
-    console.log(`\nCompiled ${name} script!`)
-    console.log(`\nWatching file changes for ${name} script...`)
+    console.log(chalk.gray(`\nCompiled ${name} script!`))
+    console.log(chalk.gray(`\nWatching file changes for ${name} script...`))
   })
 
   const server = new WebpackDevServer(compiler, {
@@ -118,8 +125,8 @@ function startRenderer(callback) {
     clientLogLevel: 'warning',
   })
 
-  server.listen(9080, '', err => {
-    if (err) console.error(err)
+  server.listen(9080, '', (err) => {
+    if (err) console.error(chalk.red(err))
 
     callback()
   })
