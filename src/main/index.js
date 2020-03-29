@@ -2,10 +2,10 @@ import { app, BrowserWindow, Menu } from 'electron'
 import { productName } from '../../package.json'
 
 // set app name
-app.setName(productName)
+app.name = productName
 
 // disable electron warning
-process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = false
 
 const gotTheLock = app.requestSingleInstanceLock()
 const isDev = process.env.NODE_ENV === 'development'
@@ -26,7 +26,10 @@ if (!isDev) {
     app.quit()
     process.exit(0)
   }
+
 } else {
+  process.env.ELECTRON_ENABLE_LOGGING = true
+
   require('electron-debug')({
     showDevTools: !(process.env.RENDERER_REMOTE_DEBUGGING === 'true'),
   })
@@ -137,7 +140,7 @@ const sendMenuEvent = async data => {
 
 const template = [
   {
-    label: app.getName(),
+    label: app.name,
     submenu: [
       {
         label: 'Home',
@@ -179,7 +182,7 @@ const template = [
 function setMenu() {
   if (process.platform === 'darwin') {
     template.unshift({
-      label: app.getName(),
+      label: app.name,
       submenu: [
         { role: 'about' },
         { type: 'separator' },
