@@ -24,7 +24,7 @@ This template takes advantage of `webpack-4` with `vue-loader`, `electron-builde
 - `Typescript` support
 - Worker scripts (to perform CPU-intensive operations), to use with nodejs `child_process` module. [Sample Worker File](src\utilities\workerSample.ts)
 - Easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
-- Installed [vue-devtools](https://github.com/vuejs/vue-devtools) and [devtron](https://github.com/electron/devtron) tools for development
+- Installed [vue-devtools](https://github.com/vuejs/vue-devtools)
 - `DEV`, `DEBUG` & `BUILD` NPM scripts
 - `Babel` configured
 - `ESLint` configured

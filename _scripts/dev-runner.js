@@ -1,5 +1,5 @@
 process.env.NODE_ENV = 'development'
-process.env.ELECTRON_ENABLE_LOGGING = true
+// process.env.ELECTRON_ENABLE_LOGGING = true
 
 const chalk = require('chalk')
 const electron = require('electron')

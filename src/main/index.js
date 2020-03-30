@@ -3,6 +3,8 @@ import { productName } from '../../package.json'
 
 // set app name
 app.name = productName
+// to hide deprecation message
+app.allowRendererProcessReuse = true
 
 // disable electron warning
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = false
@@ -26,19 +28,17 @@ if (!isDev) {
     app.quit()
     process.exit(0)
   }
-
 } else {
-  process.env.ELECTRON_ENABLE_LOGGING = true
+  // process.env.ELECTRON_ENABLE_LOGGING = true
 
   require('electron-debug')({
-    showDevTools: !(process.env.RENDERER_REMOTE_DEBUGGING === 'true'),
+    showDevTools: false,
   })
 }
 
 async function installDevTools() {
   try {
     /* eslint-disable */
-    require('devtron').install()
     require('vue-devtools').install()
     /* eslint-enable */
   } catch (err) {
@@ -86,7 +86,7 @@ function createWindow() {
   })
 
   mainWindow.on('closed', () => {
-    console.log('closed')
+    console.log('\nApplication exiting...')
   })
 }
 
@@ -95,6 +95,7 @@ app.on('ready', () => {
 
   if (isDev) {
     installDevTools()
+    mainWindow.webContents.openDevTools()
   }
 
   if (isDebug) {
@@ -134,7 +135,7 @@ app.on('ready', () => {
 })
  */
 
-const sendMenuEvent = async data => {
+const sendMenuEvent = async (data) => {
   mainWindow.webContents.send('change-view', data)
 }
 
