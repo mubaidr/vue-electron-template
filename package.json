@@ -24,7 +24,7 @@
     "babel-loader": "^8.1.0",
     "chalk": "^4.0.0",
     "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.4.2",
+    "css-loader": "^3.5.2",
     "electron": "^8.2.0",
     "electron-builder": "^22.4.1",
     "electron-debug": "^3.0.1",
