@@ -27,7 +27,7 @@ const config = {
     path: path.join(__dirname, '../dist'),
     filename: '[name].js',
   },
-  externals: externals.filter(d => !whiteListedModules.includes(d)),
+  externals: externals.filter((d) => !whiteListedModules.includes(d)),
   module: {
     rules: [
       {

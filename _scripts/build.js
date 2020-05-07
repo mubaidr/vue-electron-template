@@ -69,9 +69,9 @@ builder
     targets,
     config,
   })
-  .then(m => {
+  .then((m) => {
     console.log(m)
   })
-  .catch(e => {
+  .catch((e) => {
     console.error(e)
   })

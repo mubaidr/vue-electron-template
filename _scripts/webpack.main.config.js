@@ -19,7 +19,7 @@ const config = {
   entry: {
     main: path.join(__dirname, '../src/main/index.js'),
   },
-  externals: externals.filter(d => !whiteListedModules.includes(d)),
+  externals: externals.filter((d) => !whiteListedModules.includes(d)),
   module: {
     rules: [
       {

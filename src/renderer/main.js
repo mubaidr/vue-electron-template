@@ -18,7 +18,7 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App),
+  render: (h) => h(App),
 })
 
 // to avoild accesing electorn api from web app build
@@ -32,3 +32,20 @@ if (window && window.process && window.process.type === 'renderer') {
     }
   })
 }
+
+// sample context menu
+// const { remote } = require('electron')
+// const { Menu, MenuItem } = remote
+// const menu = new Menu()
+// menu.append(new MenuItem({ label: 'Home' }))
+// menu.append(new MenuItem({ type: 'separator' }))
+// menu.append(new MenuItem({ label: 'Other' }))
+
+// window.addEventListener(
+//   'contextmenu',
+//   (e) => {
+//     e.preventDefault()
+//     menu.popup({ window: remote.getCurrentWindow() })
+//   },
+//   false
+// )
