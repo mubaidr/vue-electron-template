@@ -149,13 +149,17 @@ if (isDevMode) {
   )
 } else {
   config.plugins.push(
-    new CopyWebpackPlugin([
-      {
-        from: path.join(__dirname, '../static'),
-        to: path.join(__dirname, '../dist/static'),
-        ignore: ['.*'],
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.join(__dirname, '../static'),
+          to: path.join(__dirname, '../dist/static'),
+          globOptions: {
+            ignore: ['.*'],
+          },
+        },
+      ],
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
     })
