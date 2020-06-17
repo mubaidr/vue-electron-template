@@ -17,7 +17,17 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "eiurur",
+      "name": "eiurur",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4101830?v=4",
+      "profile": "https://github.com/eiurur",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
