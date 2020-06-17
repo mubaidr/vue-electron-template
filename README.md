@@ -80,10 +80,17 @@ All credits to authors of packages and tools used in the project.
 Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-| [<img src="https://avatars3.githubusercontent.com/u/35353768?v=4" width="100px;" alt="Jibbie R. Eguna"/><br /><sub><b>Jibbie R. Eguna</b></sub>](https://github.com/jbeguna04)<br />[🎨](#design-jbeguna04 "Design") |
-| :---: |
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/jbeguna04"><img src="https://avatars3.githubusercontent.com/u/35353768?v=4" width="100px;" alt=""/><br /><sub><b>Jibbie R. Eguna</b></sub></a><br /><a href="#design-jbeguna04" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/eiurur"><img src="https://avatars0.githubusercontent.com/u/4101830?v=4" width="100px;" alt=""/><br /><sub><b>eiurur</b></sub></a><br /><a href="https://github.com/mubaidr/vue-electron-template/commits?author=eiurur" title="Code">💻</a></td>
+  </tr>
+</table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
