@@ -14,17 +14,17 @@ This template takes advantage of `webpack-4` with `vue-loader`, `electron-builde
 
 ### Features
 
-- [Bulma-Pro](https://mubaidr.github.io/bulma-pro/), a theme suitable for desktop application based on [Bulma](https://bulma.io/)
+- [Bulma-Fluent](https://mubaidr.github.io/bulma-fluent/), a theme suitable for desktop application based on [Bulma](https://bulma.io/)
 - [vue-router](https://github.com/vuejs/vue-router)
 - [vuex](https://github.com/vuejs/vuex)
 - [vue-electron](https://github.com/SimulatedGREG/vue-electron)
 - [material-design-icons](http://google.github.io/material-design-icons/) installed
 - Some built-in animaitons [animations.scss](src\renderer\assets\style\animations.scss)
 - `SCSS`/`SASS` support with [vue-loader](https://github.com/vuejs/vue-loader/) (removes unused css/styles during build)
-- `Typescript` support
+- `Typescript` support (for `Vuejs` as well)
 - Worker scripts (to perform CPU-intensive operations), to use with nodejs `child_process` module. [Sample Worker File](src\utilities\workerSample.ts)
 - Easily package your electron app using [electron-builder](https://github.com/electron-userland/electron-builder)
-- Installed [vue-devtools](https://github.com/vuejs/vue-devtools)
+- `vue-devtools` installed
 - `DEV`, `DEBUG` & `BUILD` NPM scripts
 - `Babel` configured
 - `ESLint` configured
@@ -91,6 +91,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
