@@ -15,11 +15,11 @@
           <p class="subtitle is-6">
             The boilerplate for making electron applications using vue.js.
           </p>
-          <RouterLink class="button is-info" to="about">
+          <RouterLink class="button is-primary" to="about">
             <i class="material-icons">info</i>
             <span>About</span>
           </RouterLink>
-          <RouterLink class="button is-info" to="help">
+          <RouterLink class="button is-primary" to="help">
             <i class="material-icons">help</i>
             <span>Help</span>
           </RouterLink>
@@ -29,8 +29,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
+
+enum TEST {}
 
 export default Vue.extend({
   name: 'Home',

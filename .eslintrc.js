@@ -24,14 +24,19 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
+    'prettier/@typescript-eslint',
     'prettier/vue',
   ],
 
   // https://eslint.org/docs/user-guide/configuring#configuring-plugins
-  plugins: ['vue'],
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
 
   rules: {
     'no-console': 0,
+    semi: 0,
   },
 }

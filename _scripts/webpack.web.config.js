@@ -23,7 +23,19 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(j|t)s$/,
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/],
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },

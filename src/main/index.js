@@ -37,13 +37,10 @@ if (!isDev) {
 }
 
 async function installDevTools() {
-  try {
-    /* eslint-disable */
-    require('vue-devtools').install()
-    /* eslint-enable */
-  } catch (err) {
-    console.log(err)
-  }
+  let installExtension = require('electron-devtools-installer')
+  installExtension.default(installExtension.VUEJS_DEVTOOLS).catch((err) => {
+    console.log('Unable to install `vue-devtools`: \n', err)
+  })
 }
 
 function createWindow() {

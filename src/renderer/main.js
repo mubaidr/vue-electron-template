@@ -1,4 +1,4 @@
-import 'bulma-pro/bulma.sass'
+import 'bulma-fluent/bulma.sass'
 import 'material-design-icons/iconfont/material-icons.css'
 import Vue from 'vue'
 import App from './App.vue'
