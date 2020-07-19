@@ -56,7 +56,7 @@
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
     "tree-kill": "1.2.2",
-    "ts-loader": "^8.0.0",
+    "ts-loader": "^8.0.1",
     "typescript": "^3.9.6",
     "url-loader": "^4.1.0",
     "vue-eslint-parser": "^7.1.0",
