@@ -4,7 +4,7 @@
     "url": "https://github.com/mubaidr/vue-electron-template/issues"
   },
   "dependencies": {
-    "bulma-fluent": "^0.3.25",
+    "bulma-fluent": "^0.4.3",
     "material-design-icons": "^3.0.1",
     "vue": "^2.6.11",
     "vue-electron": "^1.0.6",
