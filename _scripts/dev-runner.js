@@ -26,7 +26,7 @@ if (remoteDebugging) {
 async function killElectron(pid) {
   return new Promise((resolve, reject) => {
     if (pid) {
-      kill(pid, (err) => {
+      kill(pid, 'SIGKILL', (err) => {
         if (err) reject(err)
 
         resolve()
