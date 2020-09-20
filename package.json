@@ -57,7 +57,7 @@
     "style-loader": "^1.2.1",
     "tree-kill": "1.2.2",
     "ts-loader": "^8.0.0",
-    "typescript": "^3.9.6",
+    "typescript": "^4.0.3",
     "url-loader": "^4.1.0",
     "vue-eslint-parser": "^7.1.0",
     "vue-loader": "^15.9.3",
