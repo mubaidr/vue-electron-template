@@ -8,7 +8,7 @@
     "material-design-icons": "^3.0.1",
     "vue": "^2.6.11",
     "vue-electron": "^1.0.6",
-    "vue-router": "^3.3.4",
+    "vue-router": "^3.4.8",
     "vuex": "^3.5.1"
   },
   "description": "An electron-vue project",
