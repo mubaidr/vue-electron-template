@@ -21,7 +21,7 @@
     "@types/babel__preset-env": "^7.9.0",
     "@types/copy-webpack-plugin": "^6.0.0",
     "@types/electron-devtools-installer": "^2.2.0",
-    "@types/eslint": "^7.2.0",
+    "@types/eslint": "^7.2.7",
     "@types/eslint-plugin-prettier": "^3.1.0",
     "@types/file-loader": "^4.2.0",
     "@types/mini-css-extract-plugin": "^0.9.1",
