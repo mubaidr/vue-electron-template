@@ -10,7 +10,7 @@ Template for building desktop applications using [Electronjs](https://electronjs
 
 ## Overview
 
-This template takes advantage of `webpack-4` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex` and so much more to provide an easy to use development (with vscode debugging) enviroment with hot module replacement.
+This template takes advantage of `webpack-5` with `vue-loader`, `electron-builder`, and some of the most used plugins like `vue-router`, `vuex` and so much more to provide an easy to use development (with vscode debugging) enviroment with hot module replacement.
 
 ### Features
 
