@@ -1,8 +1,8 @@
 import { app, BrowserWindow, Menu } from 'electron'
-import { productName } from '../../package.json'
+import pkg from '../../package.json'
 
 // set app name
-app.name = productName
+app.name = pkg.productName
 // to hide deprecation message
 app.allowRendererProcessReuse = true
 

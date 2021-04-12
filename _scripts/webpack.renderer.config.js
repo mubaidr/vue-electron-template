@@ -60,9 +60,6 @@ const config = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDevMode,
-            },
           },
           {
             loader: 'css-loader',
@@ -81,9 +78,6 @@ const config = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDevMode,
-            },
           },
           'css-loader',
         ],

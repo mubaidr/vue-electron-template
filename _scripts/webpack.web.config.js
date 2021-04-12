@@ -58,9 +58,6 @@ const config = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDevMode,
-            },
           },
           {
             loader: 'css-loader',
@@ -79,9 +76,6 @@ const config = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDevMode,
-            },
           },
           'css-loader',
         ],
@@ -117,7 +111,16 @@ const config = {
   node: {
     __dirname: isDevMode,
     __filename: isDevMode,
-    fs: 'empty',
+  },
+  resolve: {
+    fallback: {
+      // fs: false,
+      // os: require.resolve('os-browserify/browser'),
+      // path: require.resolve('path-browserify'),
+      fs: false,
+      os: false,
+      path: false,
+    },
   },
   plugins: [
     // new WriteFilePlugin(),
