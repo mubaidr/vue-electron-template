@@ -39,6 +39,7 @@ const config = {
     ],
   },
   node: {
+    global: true,
     __dirname: isDevMode,
     __filename: isDevMode,
   },

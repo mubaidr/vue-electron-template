@@ -1,6 +1,8 @@
 import { app, BrowserWindow, Menu } from 'electron'
 import pkg from '../../package.json'
 
+require('@electron/remote/main').initialize()
+
 // set app name
 app.name = pkg.productName
 // to hide deprecation message
@@ -57,6 +59,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       nodeIntegrationInWorker: false,
+      contextIsolation: false,
       webSecurity: false,
     },
     show: false,

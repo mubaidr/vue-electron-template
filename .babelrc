@@ -4,9 +4,10 @@
       "@babel/env",
       {
         "targets": {
-          "chrome": "83",
-          "node": "12.14.1"
-        }
+          "chrome": "89",
+          "node": "14.16"
+        },
+        "modules": "commonjs"
       }
     ]
   ],

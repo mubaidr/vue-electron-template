@@ -7,7 +7,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ES6"
+    "target": "ES6",
+    "types": ["node"]
   },
   "exclude": ["node_modules"],
   "files": ["src/vue-shims.d.ts"],
