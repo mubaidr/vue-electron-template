@@ -4,7 +4,7 @@
     "url": "https://github.com/mubaidr/vue-electron-template/issues"
   },
   "dependencies": {
-    "@electron/remote": "^1.1.0",
+    "@electron/remote": "^1.2.0",
     "bulma-fluent": "^0.4.3",
     "material-design-icons": "^3.0.1",
     "vue": "^2.6.12",
