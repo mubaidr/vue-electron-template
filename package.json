@@ -9,7 +9,7 @@
     "material-design-icons": "^3.0.1",
     "vue": "^2.6.12",
     "vue-electron": "^1.0.6",
-    "vue-router": "^3.5.1",
+    "vue-router": "^3.5.2",
     "vuex": "^3.6.2"
   },
   "description": "An electron-vue project",
