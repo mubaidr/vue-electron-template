@@ -24,7 +24,7 @@
     "@types/electron-devtools-installer": "^2.2.0",
     "@types/eslint": "^7.2.9",
     "@types/eslint-plugin-prettier": "^3.1.0",
-    "@types/file-loader": "^4.2.1",
+    "@types/file-loader": "^5.0.1",
     "@types/mini-css-extract-plugin": "^1.4.1",
     "@types/prettier": "^2.2.3",
     "@types/sass": "^1.16.0",
