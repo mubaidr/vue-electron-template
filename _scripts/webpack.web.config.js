@@ -113,6 +113,13 @@ const config = {
     __filename: isDevMode,
   },
   resolve: {
+    alias: {
+      '@': path.join(__dirname, '../src/renderer'),
+      vue$: 'vue/dist/vue.esm.js',
+      src: path.join(__dirname, '../src/'),
+      icons: path.join(__dirname, '../_icons/'),
+    },
+    extensions: ['.ts', '.js', '.vue', '.json', '.css'],
     fallback: {
       // fs: false,
       // os: require.resolve('os-browserify/browser'),
@@ -139,15 +146,6 @@ const config = {
       chunkFilename: '[id].css',
     }),
   ],
-  resolve: {
-    alias: {
-      '@': path.join(__dirname, '../src/renderer'),
-      vue$: 'vue/dist/vue.esm.js',
-      src: path.join(__dirname, '../src/'),
-      icons: path.join(__dirname, '../_icons/'),
-    },
-    extensions: ['.ts', '.js', '.vue', '.json', '.css'],
-  },
   target: 'web',
 }
 
