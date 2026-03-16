@@ -36,7 +36,7 @@
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.1",
     "electron": "^12.0.2",
-    "electron-builder": "^22.10.5",
+    "electron-builder": "^22.11.7",
     "electron-debug": "^3.2.0",
     "electron-devtools-installer": "^3.1.1",
     "electron-rebuild": "^2.3.5",
